@@ -1,11 +1,17 @@
 [
     {
         "start": "2014-05-17T16:22:27.492164",
-        "content": "Conversation<br><img src=\"img/comments-icon.png\" style=\"width:32px; height:32px;\">"
+        "content": {
+            "count": 100,
+            "title": "test 1"
+        }
     },
     {
         "start": "2014-05-13T16:22:27.492164",
         "end": "2014-05-17T16:22:27.492164",
-        "content": "Traject A"
+        "content": {
+            "count": 50,
+            "title": "test 2"
+        }
     }
 ]

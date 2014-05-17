@@ -5,7 +5,7 @@
         links = NS.links,
         $ = NS.jQuery,
         moment = NS.moment,
-        timelineEl = document.getElementById('mytimeline'),
+        eventsTimelineElem = document.getElementById('events'),
         data,
         dataUrl = "/json/test.json",
         options = {
@@ -17,7 +17,6 @@
 
     function parsePayload(payload) {
         var idx,
-            dt,
             data = [],
             start,
             end,
@@ -29,9 +28,10 @@
             each = payload[idx];
             start = each.start;
             content = each.content;
+
             item = {
                 "start": moment(start),
-                "content": content
+                "content": content.title + ": " + content.count
             };
             end = each.end;
             if (end) {
@@ -43,21 +43,19 @@
         return data;
     }
 
-    function render(payload) {
+    function timelineRender(payload) {
         data = parsePayload(payload);
         timeline.draw(data);
     }
 
-    var drawVisualization = function (data) {
-        timeline = new links.Timeline(timelineEl, options);
-        $.get(dataUrl, null, render, "json");
+    var drawVisualization = function (resourceUrl, targetElem, callback) {
+        timeline = new links.Timeline(targetElem, options);
+        $.get(resourceUrl, null, callback, "json");
 
         // attach an event listener using the links events handler
         //links.events.addListener(timeline, 'rangechanged', onRangeChanged);
-
-        // Draw our timeline with the created data and options
     };
 
-    drawVisualization();
+    drawVisualization(dataUrl, eventsTimelineElem, timelineRender);
 
 }(this));
