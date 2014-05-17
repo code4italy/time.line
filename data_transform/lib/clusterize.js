@@ -1,4 +1,39 @@
-exports.mensile = function(rows, filter) {
+/**
+ * hackaton #code4italy @montecitorio 17/5/2014
+ * author: emanuele de cupis
+ * e.decup.is
+ *
+ */
+
+
+var csv = require('csv');
+var _ = require('underscore');
+
+
+/**
+ * utility che trasforma una stringa 20140315 in un oggetto Date()
+ * @param  {[type]} s [description]
+ * @return {[type]}   [description]
+ */
+var toDate = function(o, endOfDay) {
+    // console.log(o);
+    var y = o.slice(0, 4);
+    var m = o.slice(4, 6);
+    var d = o.substring(6);
+
+    if (endOfDay) {
+        return new Date(y, m, d, 23, 59, 59);
+    } else {
+        return new Date(y, m, d, 0, 0, 0);
+    }
+};
+
+/**
+ * raggruppa gli atti della camera dei deputati per mese
+ * @param  {[type]} rows [description]
+ * @return {[type]}      [description]
+ */
+exports.mensile = function(rows, title) {
     //definisco il range globale
 
     var count = rows.length;
@@ -10,8 +45,6 @@ exports.mensile = function(rows, filter) {
     //array dei risultati filtrati per mese e anno
     var r = {};
 
-    //filtro eventuali risultati
-    rows = _.filter(rows, filter);
 
     //creo la clusterizzazione
     _.each(rows, function(e) {
@@ -19,7 +52,7 @@ exports.mensile = function(rows, filter) {
         var q = e[0];
         var d = toDate(e[1]);
 
-        console.log('q: ' + q + ' d: ' + d);
+        //   console.log('q: ' + q + ' d: ' + d);
 
         //prendo l'anno di riferimento 
         var y = d.getFullYear();
@@ -46,7 +79,7 @@ exports.mensile = function(rows, filter) {
         var m0 = d.getMonth();
         var m1 = d.getMonth() + 1;
 
-        console.log('m0: ' + m0);
+        //   console.log('m0: ' + m0);
 
         //sommo 
         var v = r[y][m1];
@@ -64,7 +97,7 @@ exports.mensile = function(rows, filter) {
     var output = [];
 
 
-    console.log(JSON.stringify(r));
+    // console.log(JSON.stringify(r));
 
     for (var year in r) {
         var months = r[year];
@@ -87,13 +120,13 @@ exports.mensile = function(rows, filter) {
 
             //il primo giorno del mese successivo meno un secondo
             endDate = new Date(_endDate.setSeconds(_endDate.getSeconds() - 1));
-            console.log(startDate.toString());
-            console.log(endDate.toString());
+            //  console.log(startDate.toString());
+            //  console.log(endDate.toString());
             output.push({
                 'start': startDate,
                 'end': endDate,
                 'content': {
-                    title: 'atti',
+                    title: title || 'atti',
                     count: count
                 }
             });
@@ -102,12 +135,12 @@ exports.mensile = function(rows, filter) {
 
     }
 
-    console.log(output);
+
 
     // output = [_.last(output)];
 
     //filtro
-    output = _.filter(output, function(i) {
+    /*   output = _.filter(output, function(i) {
         var start = new Date(i['start']);
         var end = new Date(i['start']);
         var now = new Date();
@@ -121,7 +154,10 @@ exports.mensile = function(rows, filter) {
 
 
 
-    });
+    });*/
+
+    console.log('****' + title + '****');
+    //  console.log(output);
 
     return output;
 
