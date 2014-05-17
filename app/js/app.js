@@ -8,6 +8,9 @@
             "atti": [
                 "json/data_cluster_mensile.json",
                 "json/data_legislature.json"
+            ],
+            "legislature": [
+                "json/data_legislature.json"
             ]
         },
         options = {
@@ -19,7 +22,8 @@
             editable: false,   // enable dragging and editing events
             style: 'box',
             stackEvents: true
-        };
+        },
+        visibleTimelines = [];
 
     function parsePayload(payload) {
         var idx,
@@ -67,17 +71,49 @@
         }
     }
 
-    var drawVisualization = function (targetDatasetName) {
+    var updateVisualizations = function (sourceIdx) {
+        var source = visibleTimelines[sourceIdx],
+            sourceRange = source.getVisibleChartRange(),
+            idx,
+            idsLen = visibleTimelines.length;
+
+        for (idx = 0; idx < idsLen; idx++) {
+            if (idx !== sourceIdx) {
+                visibleTimelines[idx].setVisibleChartRange(
+                    sourceRange.start,
+                    sourceRange.end
+                );
+            }
+        }
+    };
+
+    function getLen(arr) {
+        return arr.length;
+    }
+
+    var drawVisualization = function (targetDatasetName, idx) {
         var elem = NS.document.getElementById(targetDatasetName),
             timelineRenderer = new links.Timeline(elem, options),
             urls = resources[targetDatasetName];
 
         renderResources(urls, timelineRenderer);
 
-        // attach an event listener using the links events handler
-        //links.events.addListener(timeline, 'rangechanged', onRangeChanged);
+        visibleTimelines.push(timelineRenderer);
+
+        links.events.addListener(
+            timelineRenderer,
+            'rangechange',
+            function () {
+                updateVisualizations(idx);
+            }
+        );
+
+        updateVisualizations(idx);
     };
 
-    drawVisualization("atti");
+    drawVisualization("atti", 0);
+    drawVisualization("legislature", 1);
+
+    NS._vis = visibleTimelines;
 
 }(this));
