@@ -84,7 +84,7 @@ var ReadAndSave = function(fn, type) {
 
         var o = _.map(rows, fn);
 
-        fs.writeFile(getDestinationFile(type), JSON.stringify(o), function(err) {
+        fs.writeFile(getDestinationFile(type), JSON.stringify(o, null, 2), function(err) {
             if (err) {
                 console.log(err);
             } else {
@@ -98,56 +98,61 @@ var ReadAndSave = function(fn, type) {
 };
 
 var fn = {
-    'elezioni': function() {
 
-        ReadAndSave(function(r) {
-            row = r.split(';');
-            return {
-                "start": j2(row[1]),
-                "content": {
-                    "title": row[0],
-                    "type": 'elezioni'
-                }
-            }
-        }, 'elezioni');
-
-
-    },
     'governi': function() {
-        ReadAndSave(function(r) {
+        ReadAndSave(function(r, k, l) {
             row = r.split(';');
+            // var next = (k == l.length - 1 ? null : l[k + 1].split(';'));
+            var next = (k == 0 ? null : l[k - 1].split(';'));
+
+
+
+            var endDate;
+            if (next) {
+                var nextStart = j2(next[1]);
+                endDate = new Date(nextStart.setSeconds(nextStart.getSeconds() - 1));
+
+            } else {
+                endDate = new Date();
+            }
+
+
             return {
                 "start": j2(row[1]),
+                "end": endDate,
                 "content": {
-                    "title": row[0],
-                    "type": 'governi'
-                }
+                    "title": row[0]
+                },
+                "type": 'governi'
             }
         }, 'governi');
 
 
     },
-    'referendum': function() {
+    'votazioni': function() {
 
         ReadAndSave(function(r) {
             row = r.split(';');
             return {
                 "start": j2(row[1]),
                 "content": {
-                    "title": row[0],
-                    "type": 'referendum'
-                }
+                    "title": row[0]
+                },
+                "type": 'votazioni'
             }
-        }, 'referendum');
+        }, 'votazioni');
 
 
     }
 
 };
 
-var t = ['elezioni', 'governi', 'referendum'];
+exports.run = function() {
+
+    var t = ['governi', 'votazioni'];
 
 
-_.each(t, function(x) {
-    fn[x]();
-});
+    _.each(t, function(x) {
+        fn[x]();
+    });
+}

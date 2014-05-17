@@ -28,7 +28,7 @@ function ReadAndWrite(source, destination, fn, cb) {
         console.log(Boolean(o));
         // console.log(JSON.stringify(o));
 
-        fs.writeFile(destination, JSON.stringify(o), function(err) {
+        fs.writeFile(destination, JSON.stringify(o, null, 2), function(err) {
             if (err) {
                 console.log(err);
             } else {
@@ -58,7 +58,7 @@ var generators = {
         var source = DATA_DIR + '/atti_ultimaLeg_xGG.csv';
         var destination = WEB_DIR + '/data_cluster_' + t + '.json';
         var fn = function(rows) {
-            return clusterize.mensile(rows);
+            return clusterize.mensile(rows, "atti", "atti");
 
         }
 
@@ -77,7 +77,7 @@ var generators = {
                 return r[2] == "Proposta di legge ordinaria";
             });
 
-            return clusterize.mensile(rows, "Proposta di legge ordinaria");
+            return clusterize.mensile(rows, "Proposta di legge ordinaria", "pdl");
 
         }
 
@@ -96,7 +96,7 @@ var generators = {
 
                 return r[2] == "Disegno di legge ordinario";
             });
-            return clusterize.mensile(rows, "Disegno di legge ordinario");
+            return clusterize.mensile(rows, "Disegno di legge ordinario", "ddl");
 
         }
 
@@ -113,7 +113,7 @@ var generators = {
                 console.log(r[2]);
                 return r[2] == "Proposta di legge costituzionale";
             });
-            return clusterize.mensile(rows, "Proposta di legge costituzionale");
+            return clusterize.mensile(rows, "Proposta di legge costituzionale", "pdlc");
 
         }
 
@@ -125,12 +125,15 @@ var generators = {
 };
 
 
-//per ogni livello di cluster (mensile, trimestrale, semestrale) generare file json per Timelinejs
-for (var c in generators) {
-    console.log(c);
-    var fn = generators[c];
-    if (fn) {
-        var o = fn();
+exports.run = function() {
 
+    //per ogni livello di cluster (mensile, trimestrale, semestrale) generare file json per Timelinejs
+    for (var c in generators) {
+        console.log(c);
+        var fn = generators[c];
+        if (fn) {
+            var o = fn();
+
+        }
     }
 }

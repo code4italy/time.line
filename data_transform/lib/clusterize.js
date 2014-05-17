@@ -33,7 +33,7 @@ var toDate = function(o, endOfDay) {
  * @param  {[type]} rows [description]
  * @return {[type]}      [description]
  */
-exports.mensile = function(rows, title) {
+exports.mensile = function(rows, title, type) {
     //definisco il range globale
 
     var count = rows.length;
@@ -128,7 +128,8 @@ exports.mensile = function(rows, title) {
                 'content': {
                     title: title || 'atti',
                     count: count
-                }
+                },
+                type: type
             });
 
         }

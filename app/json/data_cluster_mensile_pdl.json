@@ -5,7 +5,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2008-02-29T23:00:00.000Z",
@@ -13,7 +14,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2008-03-31T22:00:00.000Z",
@@ -21,7 +23,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2008-04-30T22:00:00.000Z",
@@ -29,7 +32,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2008-05-31T22:00:00.000Z",
@@ -37,7 +41,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2008-06-30T22:00:00.000Z",
@@ -45,7 +50,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2008-07-31T22:00:00.000Z",
@@ -53,7 +59,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2008-08-31T22:00:00.000Z",
@@ -61,7 +68,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 2
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2008-09-30T22:00:00.000Z",
@@ -69,7 +77,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 2
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2008-10-31T23:00:00.000Z",
@@ -77,7 +86,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2008-11-30T23:00:00.000Z",
@@ -85,7 +95,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2008-12-31T23:00:00.000Z",
@@ -93,7 +104,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2009-01-31T23:00:00.000Z",
@@ -101,7 +113,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2009-02-28T23:00:00.000Z",
@@ -109,7 +122,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 2
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2009-03-31T22:00:00.000Z",
@@ -117,7 +131,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2009-04-30T22:00:00.000Z",
@@ -125,7 +140,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2009-05-31T22:00:00.000Z",
@@ -133,7 +149,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2009-06-30T22:00:00.000Z",
@@ -141,7 +158,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2009-07-31T22:00:00.000Z",
@@ -149,7 +167,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2009-08-31T22:00:00.000Z",
@@ -157,7 +176,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2009-09-30T22:00:00.000Z",
@@ -165,7 +185,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2009-10-31T23:00:00.000Z",
@@ -173,7 +194,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2009-11-30T23:00:00.000Z",
@@ -181,7 +203,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2009-12-31T23:00:00.000Z",
@@ -189,7 +212,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2010-01-31T23:00:00.000Z",
@@ -197,7 +221,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2010-02-28T23:00:00.000Z",
@@ -205,7 +230,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 2
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2010-03-31T22:00:00.000Z",
@@ -213,7 +239,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2010-04-30T22:00:00.000Z",
@@ -221,7 +248,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2010-05-31T22:00:00.000Z",
@@ -229,7 +257,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2010-06-30T22:00:00.000Z",
@@ -237,7 +266,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2010-07-31T22:00:00.000Z",
@@ -245,7 +275,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2010-08-31T22:00:00.000Z",
@@ -253,7 +284,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 2
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2010-09-30T22:00:00.000Z",
@@ -261,7 +293,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2010-10-31T23:00:00.000Z",
@@ -269,7 +302,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2010-11-30T23:00:00.000Z",
@@ -277,7 +311,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2010-12-31T23:00:00.000Z",
@@ -285,7 +320,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2011-01-31T23:00:00.000Z",
@@ -293,7 +329,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 2
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2011-02-28T23:00:00.000Z",
@@ -301,7 +338,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 2
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2011-03-31T22:00:00.000Z",
@@ -309,7 +347,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2011-04-30T22:00:00.000Z",
@@ -317,7 +356,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2011-05-31T22:00:00.000Z",
@@ -325,7 +365,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2011-06-30T22:00:00.000Z",
@@ -333,7 +374,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2011-07-31T22:00:00.000Z",
@@ -341,7 +383,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2011-08-31T22:00:00.000Z",
@@ -349,7 +392,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2011-09-30T22:00:00.000Z",
@@ -357,7 +401,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2011-10-31T23:00:00.000Z",
@@ -365,7 +410,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2011-11-30T23:00:00.000Z",
@@ -373,7 +419,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2011-12-31T23:00:00.000Z",
@@ -381,7 +428,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2012-01-31T23:00:00.000Z",
@@ -389,7 +437,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2012-02-29T23:00:00.000Z",
@@ -397,7 +446,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2012-03-31T22:00:00.000Z",
@@ -405,7 +455,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2012-04-30T22:00:00.000Z",
@@ -413,7 +464,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 6
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2012-05-31T22:00:00.000Z",
@@ -421,7 +473,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2012-06-30T22:00:00.000Z",
@@ -429,7 +482,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 2
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2012-07-31T22:00:00.000Z",
@@ -437,7 +491,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2012-08-31T22:00:00.000Z",
@@ -445,7 +500,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2012-09-30T22:00:00.000Z",
@@ -453,7 +509,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 2
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2012-10-31T23:00:00.000Z",
@@ -461,7 +518,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2012-11-30T23:00:00.000Z",
@@ -469,7 +527,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 2
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2012-12-31T23:00:00.000Z",
@@ -477,7 +536,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2013-01-31T23:00:00.000Z",
@@ -485,7 +545,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2013-02-28T23:00:00.000Z",
@@ -493,7 +554,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2013-03-31T22:00:00.000Z",
@@ -501,7 +563,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2013-04-30T22:00:00.000Z",
@@ -509,7 +572,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 1076
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2013-05-31T22:00:00.000Z",
@@ -517,7 +581,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 496
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2013-06-30T22:00:00.000Z",
@@ -525,7 +590,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 486
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2013-07-31T22:00:00.000Z",
@@ -533,7 +599,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 308
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2013-08-31T22:00:00.000Z",
@@ -541,7 +608,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 322
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2013-09-30T22:00:00.000Z",
@@ -549,7 +617,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 152
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2013-10-31T23:00:00.000Z",
@@ -557,7 +626,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 190
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2013-11-30T23:00:00.000Z",
@@ -565,7 +635,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 200
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2013-12-31T23:00:00.000Z",
@@ -573,7 +644,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 210
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2014-01-31T23:00:00.000Z",
@@ -581,7 +653,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 102
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2014-02-28T23:00:00.000Z",
@@ -589,7 +662,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 156
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2014-03-31T22:00:00.000Z",
@@ -597,7 +671,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 218
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2014-04-30T22:00:00.000Z",
@@ -605,7 +680,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 180
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2014-05-31T22:00:00.000Z",
@@ -613,7 +689,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 158
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2014-06-30T22:00:00.000Z",
@@ -621,7 +698,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 28
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2014-07-31T22:00:00.000Z",
@@ -629,7 +707,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2014-08-31T22:00:00.000Z",
@@ -637,7 +716,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2014-09-30T22:00:00.000Z",
@@ -645,7 +725,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2014-10-31T23:00:00.000Z",
@@ -653,7 +734,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2014-11-30T23:00:00.000Z",
@@ -661,7 +743,8 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   },
   {
     "start": "2014-12-31T23:00:00.000Z",
@@ -669,6 +752,7 @@
     "content": {
       "title": "Proposta di legge ordinaria",
       "count": 0
-    }
+    },
+    "type": "pdl"
   }
 ]
