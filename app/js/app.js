@@ -1,4 +1,4 @@
-(function (NS) {
+(function(NS) {
     "use strict";
 
     var links = NS.links,
@@ -7,7 +7,10 @@
         resources = {
             "atti": [
                 "json/data_cluster_mensile.json",
-                "json/data_legislature.json"
+                "json/data_legislature.json",
+                "json/data_governi.json",
+                "json/data_referendum.json",
+                "json/data_elezioni.json"
             ],
             "legislature": [
                 "json/data_legislature.json"
@@ -17,9 +20,9 @@
             width: '100%',
             height: 'auto',
             layout: "box",
-            eventMargin: 0,  // minimal margin between events
+            eventMargin: 10, // minimal margin between events
             eventMarginAxis: 0, // minimal margin beteen events and the axis
-            editable: false,   // enable dragging and editing events
+            editable: false, // enable dragging and editing events
             style: 'box',
             stackEvents: true
         },
@@ -71,7 +74,7 @@
         }
     }
 
-    var updateVisualizations = function (sourceIdx) {
+    var updateVisualizations = function(sourceIdx) {
         var source = visibleTimelines[sourceIdx],
             sourceRange = source.getVisibleChartRange(),
             idx,
@@ -91,7 +94,7 @@
         return arr.length;
     }
 
-    var drawVisualization = function (targetDatasetName, idx) {
+    var drawVisualization = function(targetDatasetName, idx) {
         var elem = NS.document.getElementById(targetDatasetName),
             timelineRenderer = new links.Timeline(elem, options),
             urls = resources[targetDatasetName];
@@ -103,7 +106,7 @@
         links.events.addListener(
             timelineRenderer,
             'rangechange',
-            function () {
+            function() {
                 updateVisualizations(idx);
             }
         );
