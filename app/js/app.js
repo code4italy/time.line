@@ -4,7 +4,6 @@
     var links = NS.links,
         $ = NS.jQuery,
         moment = NS.moment,
-        data,
         resources = {
             "atti": [
                 "json/data_cluster_mensile.json",
@@ -19,7 +18,7 @@
             eventMarginAxis: 0, // minimal margin beteen events and the axis
             editable: false,   // enable dragging and editing events
             style: 'box',
-            stackEvents: false
+            stackEvents: true
         };
 
     function parsePayload(payload) {
@@ -35,10 +34,9 @@
             each = payload[idx];
             start = each.start;
             content = each.content;
-
             item = {
                 "start": moment(start),
-                "content": content.count
+                "content": "[" + idx + "] " + content.count
             };
             end = each.end;
             if (end) {
@@ -50,25 +48,36 @@
         return data;
     }
 
-    function timelineRender(payload, renderer) {
-        data = parsePayload(payload);
-        renderer.draw(data);
+    function renderResources(urls, renderer) {
+        var idx,
+            data = [],
+            urlsNum = urls.length,
+            fetchCount = 0;
+
+        function build(payload) {
+            data = data.concat(parsePayload(payload));
+            fetchCount++;
+            if (fetchCount === urlsNum) {
+                renderer.draw(data);
+            }
+        }
+
+        for (idx = 0; idx < urlsNum; idx++) {
+            $.get(urls[idx], null, build, "json");
+        }
     }
 
-    var drawVisualization = function (targetDatasetName, callback) {
+    var drawVisualization = function (targetDatasetName) {
         var elem = NS.document.getElementById(targetDatasetName),
             timelineRenderer = new links.Timeline(elem, options),
-            resourceUrl = resources[targetDatasetName][0],
-            cb = function (data) {
-                callback(data, timelineRenderer);
-            };
+            urls = resources[targetDatasetName];
 
-        $.get(resourceUrl, null, cb, "json");
+        renderResources(urls, timelineRenderer);
 
         // attach an event listener using the links events handler
         //links.events.addListener(timeline, 'rangechanged', onRangeChanged);
     };
 
-    drawVisualization("atti", timelineRender);
+    drawVisualization("atti");
 
 }(this));
