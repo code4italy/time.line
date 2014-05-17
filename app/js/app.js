@@ -91,17 +91,27 @@
         }
     };
 
+    var getRenderer = function(rendererName) {
+        if (rendererName === "timeline") {
+            return function (elem, urls) {
+                return new links.Timeline(elem, (urls.length > 1) ? stackedOptions : unStackedOptions);
+            };
+        }
+        return undefined;
+
+    };
+
     var drawVisualization = function (targetDatasetName, idx) {
         var elem = NS.document.getElementById(targetDatasetName),
             urls = resources[targetDatasetName],
-            timelineRenderer = new links.Timeline(elem, (urls.length > 1) ? stackedOptions : unStackedOptions);
+            renderer = getRenderer("timeline")(elem, urls);
 
-        renderResources(urls, timelineRenderer);
+        renderResources(urls, renderer);
 
-        visibleTimelines.push(timelineRenderer);
+        visibleTimelines.push(renderer);
 
         links.events.addListener(
-            timelineRenderer,
+            renderer,
             'rangechange',
             function () {
                 updateVisualizations(idx);
