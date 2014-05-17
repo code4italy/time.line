@@ -45,7 +45,8 @@
                 "start": moment(start)
             };
             end = each.end;
-            item.content = content.title || content.count;
+            item.content = (content.hasOwnProperty("count")) ? content.count : content.title;
+            item.count = content.count;
             if (end) {
                 item.end = moment(end);
             }
