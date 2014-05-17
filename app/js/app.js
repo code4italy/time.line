@@ -6,13 +6,20 @@
         moment = NS.moment,
         data,
         resources = {
-            "atti": ["/json/test.json"]
+            "atti": [
+                "json/data_cluster_mensile.json",
+                "json/data_legislature.json"
+            ]
         },
         options = {
-            'width': '100%',
-            'height': '300px',
-            'editable': false,   // enable dragging and editing events
-            'style': 'box'
+            width: '100%',
+            height: 'auto',
+            layout: "box",
+            eventMargin: 0,  // minimal margin between events
+            eventMarginAxis: 0, // minimal margin beteen events and the axis
+            editable: false,   // enable dragging and editing events
+            style: 'box',
+            stackEvents: false
         };
 
     function parsePayload(payload) {
@@ -31,7 +38,7 @@
 
             item = {
                 "start": moment(start),
-                "content": content.title + ": " + content.count
+                "content": content.count
             };
             end = each.end;
             if (end) {
@@ -51,7 +58,7 @@
     var drawVisualization = function (targetDatasetName, callback) {
         var elem = NS.document.getElementById(targetDatasetName),
             timelineRenderer = new links.Timeline(elem, options),
-            resourceUrl = resources[targetDatasetName],
+            resourceUrl = resources[targetDatasetName][0],
             cb = function (data) {
                 callback(data, timelineRenderer);
             };
