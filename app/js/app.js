@@ -1,8 +1,7 @@
 (function (NS) {
     "use strict";
 
-    var timeline,
-        links = NS.links,
+    var links = NS.links,
         $ = NS.jQuery,
         moment = NS.moment,
         data,
@@ -54,7 +53,7 @@
             timelineRenderer = new links.Timeline(elem, options),
             resourceUrl = resources[targetDatasetName],
             cb = function (data) {
-                timelineRender(data, timelineRenderer);
+                callback(data, timelineRenderer);
             };
 
         $.get(resourceUrl, null, cb, "json");
