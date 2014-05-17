@@ -35,10 +35,10 @@
             start = each.start;
             content = each.content;
             item = {
-                "start": moment(start),
-                "content": "[" + idx + "] " + content.count
+                "start": moment(start)
             };
             end = each.end;
+            item.content = content.title || content.count;
             if (end) {
                 item.end = moment(end);
             }
