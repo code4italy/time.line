@@ -1,0 +1,24 @@
+
+{
+    "timeline":
+    {
+        "headline":"Sh*t People Say",
+        "type":"default",
+		"text":"People say stuff",
+		"startDate":"2012,1,26",
+        "date": [
+            {
+                "startDate":"2011,12,12",
+				"endDate":"2015,1,27",
+                "headline":"Vine",
+                "text":"<p>Vine Test</p>",
+                "asset":
+                {
+                    "media":"https://vine.co/v/b55LOA1dgJU",
+                    "credit":"",
+                    "caption":""
+                }
+            }
+        ]
+    }
+}
