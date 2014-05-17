@@ -5,9 +5,10 @@
         links = NS.links,
         $ = NS.jQuery,
         moment = NS.moment,
-        eventsTimelineElem = document.getElementById('events'),
         data,
-        dataUrl = "/json/test.json",
+        resources = {
+            "atti": ["/json/test.json"]
+        },
         options = {
             'width': '100%',
             'height': '300px',
@@ -43,19 +44,25 @@
         return data;
     }
 
-    function timelineRender(payload) {
+    function timelineRender(payload, renderer) {
         data = parsePayload(payload);
-        timeline.draw(data);
+        renderer.draw(data);
     }
 
-    var drawVisualization = function (resourceUrl, targetElem, callback) {
-        timeline = new links.Timeline(targetElem, options);
-        $.get(resourceUrl, null, callback, "json");
+    var drawVisualization = function (targetDatasetName, callback) {
+        var elem = NS.document.getElementById(targetDatasetName),
+            timelineRenderer = new links.Timeline(elem, options),
+            resourceUrl = resources[targetDatasetName],
+            cb = function (data) {
+                timelineRender(data, timelineRenderer);
+            };
+
+        $.get(resourceUrl, null, cb, "json");
 
         // attach an event listener using the links events handler
         //links.events.addListener(timeline, 'rangechanged', onRangeChanged);
     };
 
-    drawVisualization(dataUrl, eventsTimelineElem, timelineRender);
+    drawVisualization("atti", timelineRender);
 
 }(this));
