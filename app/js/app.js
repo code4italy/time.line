@@ -91,10 +91,6 @@
         }
     };
 
-    function getLen(arr) {
-        return arr.length;
-    }
-
     var drawVisualization = function (targetDatasetName, idx) {
         var elem = NS.document.getElementById(targetDatasetName),
             urls = resources[targetDatasetName],
