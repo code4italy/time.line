@@ -13,17 +13,20 @@
                 "json/data_legislature.json"
             ]
         },
-        options = {
+        baseOptions = {
             width: '100%',
             height: 'auto',
             layout: "box",
             eventMargin: 0,  // minimal margin between events
-            eventMarginAxis: 0, // minimal margin beteen events and the axis
+            eventMarginAxis: 4, // minimal margin beteen events and the axis
             editable: false,   // enable dragging and editing events
             style: 'box',
             stackEvents: true
         },
+        stackedOptions = $.extend(true, {stackEvents: true}, baseOptions),
+        unStackedOptions = $.extend(true, {stackEvents: false, eventMarginAxis: 0}, baseOptions),
         visibleTimelines = [];
+
 
     function parsePayload(payload) {
         var idx,
@@ -93,8 +96,8 @@
 
     var drawVisualization = function (targetDatasetName, idx) {
         var elem = NS.document.getElementById(targetDatasetName),
-            timelineRenderer = new links.Timeline(elem, options),
-            urls = resources[targetDatasetName];
+            urls = resources[targetDatasetName],
+            timelineRenderer = new links.Timeline(elem, (urls.length > 1) ? stackedOptions : unStackedOptions);
 
         renderResources(urls, timelineRenderer);
 
