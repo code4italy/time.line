@@ -185,7 +185,8 @@
                             each = subset[l];
                             datapoint = {
                                 "date": each.start.toDate(),
-                                "value": each.count
+                                "value": each.count,
+                                "text": each.type
                             };
                             dataset.push(datapoint);
                         }
@@ -196,7 +197,10 @@
                     var options = {
                         width: "100%",
                         height: "350px",
-                        lines: lines
+                        lines: lines,
+                        tooltip: function (point) {
+                            return "<h3>" + point.value + "</h3>";
+                        }
                     };
 
                     // Instantiate our graph object.
