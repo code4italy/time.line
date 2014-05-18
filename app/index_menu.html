@@ -76,12 +76,15 @@
 									<p><a href="http://tympanus.net/Development/HeaderEffects/">On Scroll Header Effects</a></p>
 									<p><a href="http://tympanus.net/Development/PageTransitions/">A Collection of Page Transitions</a></p>
 							</div> -->
-							
+							<div id="detail" style="display:none;">
+								
+							</div>
 							<div id="wrap">
-								<div id="atti2" title="grafico"></div>
+								<div id="atti2" title="disegni di legge"></div>
 								<div id="atti" title="tutti gli atti"></div>
 								<div id="legislature" title="legislature"></div>
 								<div id="governi" title="governi"></div>
+								<div id="votazioni" title="votazioni"></div>
 							</div>
 						</div>
 						<!-- /main -->
@@ -116,9 +119,9 @@
 						$li.removeClass('hidden');
 
 						var id = $this.attr('id');
-						if(!window.isDrawn || !window.isDrawn[id]){
+					/*	if(!window.isDrawn || !window.isDrawn[id]){
 							window.draw[id]();
-						}
+						}*/
 					}
 
 					$this.toggle(1000);
@@ -129,6 +132,16 @@
 				/*var $title = $('<h4 style="position: absolute; top: 0, left: 0;">' + $this.attr('title') + '</h4>');
 				$this.css('position', 'relative');
 				$this.append($title);*/
+			});
+
+			//apri dettaglio
+			$('.timeline-event').click(function(){
+
+				$this = $(this);
+
+				alert('click');
+
+
 			});
 		});
 		</script>
