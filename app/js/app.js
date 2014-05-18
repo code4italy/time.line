@@ -1,4 +1,4 @@
-(function (NS) {
+(function(NS) {
     "use strict";
 
     var links = NS.links,
@@ -17,14 +17,19 @@
             width: '100%',
             height: 'auto',
             layout: "box",
-            eventMargin: 0,  // minimal margin between events
+            eventMargin: 0, // minimal margin between events
             eventMarginAxis: 4, // minimal margin beteen events and the axis
-            editable: false,   // enable dragging and editing events
+            editable: false, // enable dragging and editing events
             style: 'box',
             stackEvents: true
         },
-        stackedOptions = $.extend(true, {stackEvents: true}, baseOptions),
-        unStackedOptions = $.extend(true, {stackEvents: false, eventMarginAxis: 0}, baseOptions),
+        stackedOptions = $.extend(true, {
+            stackEvents: true
+        }, baseOptions),
+        unStackedOptions = $.extend(true, {
+            stackEvents: false,
+            eventMarginAxis: 0
+        }, baseOptions),
         visibleTimelines = [];
 
 
@@ -50,6 +55,9 @@
             if (end) {
                 item.end = moment(end);
             }
+
+            item.className = 'item-' + each.type;
+
             data.push(item);
         }
 
@@ -75,7 +83,7 @@
         }
     }
 
-    var updateVisualizations = function (sourceIdx) {
+    var updateVisualizations = function(sourceIdx) {
         var source = visibleTimelines[sourceIdx],
             sourceRange = source.getVisibleChartRange(),
             idx,
@@ -93,7 +101,7 @@
 
     var getRenderer = function(rendererName) {
         if (rendererName === "timeline") {
-            return function (elem, urls) {
+            return function(elem, urls) {
                 return new links.Timeline(elem, (urls.length > 1) ? stackedOptions : unStackedOptions);
             };
         }
@@ -101,7 +109,7 @@
 
     };
 
-    var drawVisualization = function (targetDatasetName, idx) {
+    var drawVisualization = function(targetDatasetName, idx) {
         var elem = NS.document.getElementById(targetDatasetName),
             urls = resources[targetDatasetName],
             renderer = getRenderer("timeline")(elem, urls);
@@ -113,7 +121,7 @@
         links.events.addListener(
             renderer,
             'rangechange',
-            function () {
+            function() {
                 updateVisualizations(idx);
             }
         );
