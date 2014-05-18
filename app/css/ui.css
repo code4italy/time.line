@@ -7,6 +7,19 @@
 	background-color: #d5f6dd !important;
 }
 
+.item-eventi{
+    background-color: #fffacd !important;
+}
+.item-eventi:nth-child(odd){
+    background-color: #ffffe0 !important;
+}
+.item-votazioni{
+    background-color: #ffdab9 !important;
+}
+.item-votazioni:nth-child(odd){
+    background-color: #ffe4b5 !important;
+}
+
 .timeline-event{
 	border-color: #f3efe0 !important;
 }
