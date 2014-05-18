@@ -1,5 +1,0 @@
-<Alloy>
-	<Window class="container">
-		<WebView id="web" url="web/index_menu.html" ></WebView>
-	</Window>
-</Alloy>

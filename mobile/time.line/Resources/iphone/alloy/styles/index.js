@@ -1,0 +1,1 @@
+module.exports = [{"isApi":true,"priority":1000.0002,"key":"Window","style":{orientationModes:[Ti.UI.LANDSCAPE_LEFT,],navBarHidden:true,}},{"isApi":true,"priority":1000.0003,"key":"web","style":{width:Ti.UI.FILL,height:Ti.UI.FILL,}}];
