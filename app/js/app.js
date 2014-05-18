@@ -14,6 +14,9 @@
                 "json/data_cluster_mensile_pdl.json",
                 "json/data_cluster_mensile_pdlc.json"
             ],
+            "governi": [
+                "json/data_governi.json"
+            ],
             "legislature": [
                 "json/data_legislature.json"
             ],
@@ -255,6 +258,7 @@
     };
 
     drawVisualization("atti", "timeline", 0);
+    drawVisualization("governi", "timeline", 1);
     drawVisualization("legislature", "timeline", 1, true);
     drawVisualization("eventi", "timeline", 2);
     drawVisualization("atti2", "graph", 3);
