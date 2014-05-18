@@ -10,6 +10,7 @@
                 "json/data_cluster_mensile.json"
             ],
             "atti2": [
+                "json/data_cluster_mensile.json",
                 "json/data_cluster_mensile_ddl.json",
                 "json/data_cluster_mensile_pdl.json",
                 "json/data_cluster_mensile_pdlc.json"
