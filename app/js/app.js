@@ -16,6 +16,9 @@
             ],
             "legislature": [
                 "json/data_legislature.json"
+            ],
+            "eventi": [
+                "json/data_eventi.json"
             ]
         },
         baseOptions = {
@@ -249,7 +252,8 @@
 
     drawVisualization("atti", "timeline", 0);
     drawVisualization("legislature", "timeline", 1, true);
-    drawVisualization("atti2", "graph", 2);
+    drawVisualization("eventi", "timeline", 2);
+    drawVisualization("atti2", "graph", 3);
 
     setTimeout(function () {
         updateVisualizations(2);
