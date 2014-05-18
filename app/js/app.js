@@ -42,12 +42,12 @@
             case 'pdl':
             case 'pdlc':
 
-                if (content.count > 50) {
+                if (content.count > 1000) {
                     // console.log('a');
-                    return 'high item-' + type;
+                    return 'level-1000 item-atti';
                 } else {
                     //console.log('b');
-                    return 'low item-' + type;
+                    return 'item-atti level-' + content.count;
 
                 }
                 break;
@@ -132,7 +132,7 @@
                 return renderer;
             };
         } else if (rendererName === "graph") {
-                var data;
+            var data;
             return function(elem, urls) {
 
                 google.load("visualization", "1");
@@ -144,7 +144,7 @@
                     url: urls[0],
                     dataType: "json",
                     async: false,
-                    success: function (payload) {
+                    success: function(payload) {
                         data = parsePayload(payload);
                     }
                 });
@@ -163,7 +163,7 @@
 
                     for (idx = 0; idx < dataLen; idx++) {
                         each = data[idx];
-                        var dt  = new Date(each.start);
+                        var dt = new Date(each.start);
                         tup = [dt, each.count];
                         table.addRow(tup);
                     }
