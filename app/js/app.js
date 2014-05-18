@@ -195,7 +195,9 @@
             urls = resources[targetDatasetName],
             renderer = getRenderer(visType)(elem, urls);
 
-        renderResources(urls, renderer);
+        if (visType === "timeline") {
+            renderResources(urls, renderer);
+        }
 
         links.events.addListener(
             renderer,
@@ -212,14 +214,10 @@
         NS.isDrawn[targetDatasetName] = true;
     };
 
-
-
-
-
     NS._vis = visibleTimelines;
 
     //espongo per il lazy load
-    NS.draw = {}
+    NS.draw = {};
     NS.isDrawn = {};
 
     NS.draw["atti"] = function() {
@@ -232,13 +230,12 @@
         drawVisualization("atti2", "graph", 2);
     };
 
-
     drawVisualization("atti", "timeline", 0);
     drawVisualization("legislature", "timeline", 1);
     drawVisualization("atti2", "graph", 2);
 
     setTimeout(function() {
         updateVisualizations(2);
-    }, 1000);
+    }, 500);
 
 }(this));
