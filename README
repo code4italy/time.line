@@ -4,6 +4,13 @@ https://github.com/code4italy/time.line
 
 AUTORI
 
+Emanuele Decupis (@balanza)
+Rigel Di Scala (@zedr_)
+Nicola Ghirardi (@ghirardinicola)
+Alessandro Pellegata (@alepelle81)
+Alessio Ricco (@alessioricco)
+
+
 DESCRIZIONE
 
 Questo software è stato prodotto al hackaton #code4italy del 2014. Utilizza gli open data della Camera dei Deputati (dati.camera.it) per generare una timeline di eventi e stratistiche, in modo da favorire l'analisi temporale dell'attività parlamentare
@@ -22,6 +29,10 @@ STRUTTURA
 |__/mobile      -->     applicazione per iPad e tablet Android, scritta in titanium
 
 
+E’ disponibile la presentazione e le slides in vari formati nella cartella
+/doc/presentazione
+
+
 UTILIZZO
 
 Scaricare il progetto.
@@ -38,3 +49,5 @@ Per l'app mobile (requisiti: Appcelerator Titanium):
 
 Posizionarsi nella cartella /mobile, eseguire ti build -p ipad.
 
+LICENZA
+Il progetto viene rilasciato con licenza Creative Commons with Attribution (http://creativecommons.org/licenses/by/3.0/it/legalcode)
