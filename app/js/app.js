@@ -1,4 +1,4 @@
-(function(NS) {
+(function (NS) {
     "use strict";
 
     var links = NS.links,
@@ -7,26 +7,26 @@
         resources = {
             "atti": [
                 "json/data_cluster_mensile.json",
-                "json/data_legislature.json",
-                "json/data_governi.json",
-                "json/data_referendum.json",
-                "json/data_elezioni.json"
+                "json/data_legislature.json"
             ],
             "legislature": [
                 "json/data_legislature.json"
             ]
         },
-        options = {
+        baseOptions = {
             width: '100%',
             height: 'auto',
             layout: "box",
-            eventMargin: 10, // minimal margin between events
-            eventMarginAxis: 0, // minimal margin beteen events and the axis
-            editable: false, // enable dragging and editing events
+            eventMargin: 0,  // minimal margin between events
+            eventMarginAxis: 4, // minimal margin beteen events and the axis
+            editable: false,   // enable dragging and editing events
             style: 'box',
             stackEvents: true
         },
+        stackedOptions = $.extend(true, {stackEvents: true}, baseOptions),
+        unStackedOptions = $.extend(true, {stackEvents: false, eventMarginAxis: 0}, baseOptions),
         visibleTimelines = [];
+
 
     function parsePayload(payload) {
         var idx,
@@ -45,7 +45,8 @@
                 "start": moment(start)
             };
             end = each.end;
-            item.content = content.title || content.count;
+            item.content = (content.hasOwnProperty("count")) ? content.count : content.title;
+            item.count = content.count;
             if (end) {
                 item.end = moment(end);
             }
@@ -74,7 +75,7 @@
         }
     }
 
-    var updateVisualizations = function(sourceIdx) {
+    var updateVisualizations = function (sourceIdx) {
         var source = visibleTimelines[sourceIdx],
             sourceRange = source.getVisibleChartRange(),
             idx,
@@ -90,23 +91,29 @@
         }
     };
 
-    function getLen(arr) {
-        return arr.length;
-    }
+    var getRenderer = function(rendererName) {
+        if (rendererName === "timeline") {
+            return function (elem, urls) {
+                return new links.Timeline(elem, (urls.length > 1) ? stackedOptions : unStackedOptions);
+            };
+        }
+        return undefined;
 
-    var drawVisualization = function(targetDatasetName, idx) {
+    };
+
+    var drawVisualization = function (targetDatasetName, idx) {
         var elem = NS.document.getElementById(targetDatasetName),
-            timelineRenderer = new links.Timeline(elem, options),
-            urls = resources[targetDatasetName];
+            urls = resources[targetDatasetName],
+            renderer = getRenderer("timeline")(elem, urls);
 
-        renderResources(urls, timelineRenderer);
+        renderResources(urls, renderer);
 
-        visibleTimelines.push(timelineRenderer);
+        visibleTimelines.push(renderer);
 
         links.events.addListener(
-            timelineRenderer,
+            renderer,
             'rangechange',
-            function() {
+            function () {
                 updateVisualizations(idx);
             }
         );
