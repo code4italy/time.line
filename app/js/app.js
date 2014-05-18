@@ -1,4 +1,4 @@
-(function (NS) {
+(function(NS) {
     "use strict";
 
     var links = NS.links,
@@ -10,7 +10,7 @@
                 "json/data_cluster_mensile.json"
             ],
             "atti2": [
-                "json/data_cluster_mensile.json"
+                "json/data_cluster_mensile_ddl.json"
             ],
             "legislature": [
                 "json/data_legislature.json"
@@ -20,14 +20,19 @@
             width: '100%',
             height: 'auto',
             layout: "box",
-            eventMargin: 0,  // minimal margin between events
+            eventMargin: 0, // minimal margin between events
             eventMarginAxis: 4, // minimal margin beteen events and the axis
-            editable: false,   // enable dragging and editing events
+            editable: false, // enable dragging and editing events
             style: 'box',
             stackEvents: true
         },
-        stackedOptions = $.extend(true, {stackEvents: true}, baseOptions),
-        unStackedOptions = $.extend(true, {stackEvents: false, eventMarginAxis: 0}, baseOptions),
+        stackedOptions = $.extend(true, {
+            stackEvents: true
+        }, baseOptions),
+        unStackedOptions = $.extend(true, {
+            stackEvents: false,
+            eventMarginAxis: 0
+        }, baseOptions),
         visibleTimelines = [];
 
     function itemClassByContent(type, content) {
@@ -47,7 +52,9 @@
                 }
                 break;
             default:
+                // console.log('c');
                 return 'item-' + type;
+                break;
         }
     }
 
@@ -99,7 +106,7 @@
         }
     }
 
-    var updateVisualizations = function () {
+    var updateVisualizations = function() {
         var source,
             sourceRange,
             idx,
@@ -118,49 +125,38 @@
         }
     };
 
-    var getRenderer = function (rendererName) {
+    var getRenderer = function(rendererName) {
         var renderer;
         if (rendererName === "timeline") {
-            return function (elem, urls) {
+            return function(elem, urls) {
                 renderer = new links.Timeline(elem, (urls.length > 1) ? stackedOptions : unStackedOptions);
                 visibleTimelines.push(renderer);
                 return renderer;
             };
         } else if (rendererName === "graph") {
-            return function (elem, urls) {
-                var data;
+            return function(elem, urls) {
 
                 google.load("visualization", "1");
 
                 // Set callback to run when API is loaded
                 google.setOnLoadCallback(drawVisualization);
 
-                $.ajax({
-                    url: urls[0],
-                    dataType: "json",
-                    async: false,
-                    success: function (payload) {
-                        data = parsePayload(payload);
-                    }
-                });
-
                 // Called when the Visualization API is loaded.
                 function drawVisualization() {
                     // Create and populate a data table.
-                    var table = new google.visualization.DataTable(),
-                        dataLen = data.length,
-                        idx,
-                        each,
-                        tup;
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('datetime', 'time');
+                    data.addColumn('number', 'Function A');
 
-                    table.addColumn('datetime', 'time');
-                    table.addColumn('number', 'Function A');
+                    function functionA(x) {
+                        return Math.sin(x / 25) * Math.cos(x / 25) * 50 + (Math.random() - 0.5) * 10;
+                    }
 
-                    for (idx = 0; idx < dataLen; idx++) {
-                        each = data[idx];
-                        var dt  = new Date(each.start);
-                        tup = [dt, each.count];
-                        table.addRow(tup);
+                    // create data
+                    var d = new Date(2010, 9, 23, 20, 0, 0);
+                    for (var i = 0; i < 100; i++) {
+                        data.addRow([new Date(d), 10]);
+                        d.setMinutes(d.getMinutes() + 1);
                     }
 
                     // specify options
@@ -175,17 +171,17 @@
                     var graph = new links.Graph(elem);
 
                     // Draw our graph with the created data and options
-                    graph.draw(table, options);
+                    graph.draw(data, options);
 
                     visibleTimelines.push(graph);
                 }
-            };
+            }
         }
         return undefined;
 
     };
 
-    var drawVisualization = function (targetDatasetName, visType, idx) {
+    var drawVisualization = function(targetDatasetName, visType, idx) {
         var elem = NS.document.getElementById(targetDatasetName),
             urls = resources[targetDatasetName],
             renderer = getRenderer(visType)(elem, urls);
@@ -195,7 +191,7 @@
         links.events.addListener(
             renderer,
             'rangechange',
-            function () {
+            function() {
                 updateVisualizations(idx);
             }
         );
@@ -203,16 +199,37 @@
         if (visType !== "graph") {
             updateVisualizations(idx);
         }
+
+        NS.isDrawn[targetDatasetName] = true;
     };
+
+
+
+
+
+    NS._vis = visibleTimelines;
+
+    //espongo per il lazy load
+    NS.draw = {}
+    NS.isDrawn = {};
+
+    NS.draw["atti"] = function() {
+        drawVisualization("atti", "timeline", 0);
+    };
+    NS.draw["legislature"] = function() {
+        drawVisualization("atti", "timeline", 1);
+    };
+    NS.draw["atti2"] = function() {
+        drawVisualization("atti2", "graph", 2);
+    };
+
 
     drawVisualization("atti", "timeline", 0);
     drawVisualization("legislature", "timeline", 1);
     drawVisualization("atti2", "graph", 2);
 
-    setTimeout(function () {
+    setTimeout(function() {
         updateVisualizations(2);
     }, 1000);
-
-    NS._vis = visibleTimelines;
 
 }(this));
