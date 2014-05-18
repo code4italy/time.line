@@ -1,0 +1,8 @@
+"Window": {
+	orientationModes : [Ti.UI.LANDSCAPE_LEFT],
+	navBarHidden : true
+}
+"web": {
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL
+} 
