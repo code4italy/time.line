@@ -116,7 +116,7 @@ a:hover, a:focus {
 }
 
 .main {
-	max-width: 69em;
+	max-width: 100%;
 	margin: 0 auto;
 }
 
