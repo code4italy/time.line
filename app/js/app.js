@@ -53,7 +53,6 @@
             case 'ddl':
             case 'pdl':
             case 'pdlc':
-
                 if (content.count > 1000) {
                     // console.log('a');
                     return 'level-1000 item-atti';
