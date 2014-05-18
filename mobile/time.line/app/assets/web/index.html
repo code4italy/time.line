@@ -34,6 +34,7 @@
 			-->
 			<nav class="st-menu st-effect-9" id="menu-9">
 				<h2 class="icon icon-params">Cosa vedere</h2>
+				<h4 style="color:#f3efe0"> Seleziona la metrica </h4>
 				<ul id="tl-list">
 					
 				</ul>
@@ -77,15 +78,19 @@
 									<p><a href="http://tympanus.net/Development/PageTransitions/">A Collection of Page Transitions</a></p>
 							</div> -->
 							<div id="detail" style="display:none;">
-								
 							</div>
+                            <div id="desc">
+                                <p>Rosso: Proposte di legge ordinaria</p>
+                                <p>Blu: Proposte di legge costituzionale </p>
+                                <p>Arancione: Disegno di legge ordinaria</p>
+                            </div>
 							<div id="wrap">
 								<div id="atti2" title="disegni di legge"></div>
 								<div id="atti" title="tutti gli atti"></div>
-								<div id="legislature" title="legislature"></div>
-								<div id="governi" title="governi"></div>
-								<div id="votazioni" title="votazioni"></div>
-							</div>
+                                <div id="eventi" title="eventi&elezioni"></div>
+                                <div id="governi" title="governi"></div>
+                                <div id="legislature" title="legislature"></div>
+                            </div>
 						</div>
 						<!-- /main -->
 					</div>
@@ -138,9 +143,6 @@
 			$('.timeline-event').click(function(){
 
 				$this = $(this);
-
-				
-
 
 			});
 		});
