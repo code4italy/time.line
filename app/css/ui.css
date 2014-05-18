@@ -7,6 +7,10 @@
 	background-color: #d5ddf6;
 }
 
+.timeline-event{
+	border-color: #f3efe0 !important;
+}
+
 .hide-axis .timeline-axis,
 .hide-axis .timeline-axis-text,
 .hide-axis .timeline-axis-grid {
