@@ -164,7 +164,7 @@ var fn = {
 
 exports.run = function() {
 
-    var t = ['governi', 'votazioni'];
+    var t = ['governi', 'votazioni', 'eventi'];
 
 
     _.each(t, function(x) {
