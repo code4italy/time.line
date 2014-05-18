@@ -130,27 +130,45 @@
             };
         } else if (rendererName === "graph") {
             return function (elem, urls) {
+                var data;
 
                 google.load("visualization", "1");
 
                 // Set callback to run when API is loaded
                 google.setOnLoadCallback(drawVisualization);
 
+                $.ajax({
+                    url: urls[0],
+                    dataType: "json",
+                    async: false,
+                    success: function (payload) {
+                        data = parsePayload(payload);
+                    }
+                });
+
                 // Called when the Visualization API is loaded.
                 function drawVisualization() {
                     // Create and populate a data table.
-                    var data = new google.visualization.DataTable();
-                    data.addColumn('datetime', 'time');
-                    data.addColumn('number', 'Function A');
+                    var table = new google.visualization.DataTable(),
+                        dataLen = data.length,
+                        idx,
+                        each,
+                        tup;
 
-                    function functionA(x) {
-                        return Math.sin(x / 25) * Math.cos(x / 25) * 50 + (Math.random() - 0.5) * 10;
-                    }
+                    table.addColumn('datetime', 'time');
+                    table.addColumn('number', 'Function A');
 
                     // create data
+                    //for (idx = 0; idx < dataLen; idx++) {
+                    //    each = data[idx];
+                    //    table.addRow([each.start, each.count]);
+                    //}
                     var d = new Date(2010, 9, 23, 20, 0, 0);
-                    for (var i = 0; i < 100; i++) {
-                        data.addRow([new Date(d), 10]);
+                    for (idx = 0; idx < dataLen; idx++) {
+                        each = data[idx];
+                        var dt  = new Date(each.start);
+                        tup = [dt, each.count];
+                        table.addRow(tup);
                         d.setMinutes(d.getMinutes() + 1);
                     }
 
@@ -166,7 +184,7 @@
                     var graph = new links.Graph(elem);
 
                     // Draw our graph with the created data and options
-                    graph.draw(data, options);
+                    graph.draw(table, options);
 
                     visibleTimelines.push(graph);
                 }
