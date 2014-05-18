@@ -1,4 +1,4 @@
-(function (NS) {
+(function(NS) {
     "use strict";
 
     var links = NS.links,
@@ -10,9 +10,7 @@
                 "json/data_cluster_mensile.json"
             ],
             "atti2": [
-                "json/data_cluster_mensile_ddl.json",
-                "json/data_cluster_mensile_pdl.json",
-                "json/data_cluster_mensile_pdlc.json"
+                "json/data_cluster_mensile_ddl.json"
             ],
             "legislature": [
                 "json/data_legislature.json"
@@ -106,7 +104,7 @@
         }
     }
 
-    var updateVisualizations = function () {
+    var updateVisualizations = function() {
         var source,
             sourceRange,
             idx,
@@ -125,75 +123,64 @@
         }
     };
 
-    var getRenderer = function (rendererName) {
+    var getRenderer = function(rendererName) {
         var renderer;
         if (rendererName === "timeline") {
-            return function (elem, urls) {
+            return function(elem, urls) {
                 renderer = new links.Timeline(elem, (urls.length > 1) ? stackedOptions : unStackedOptions);
                 visibleTimelines.push(renderer);
                 return renderer;
             };
         } else if (rendererName === "graph") {
             var data;
-            return function (elem, urls) {
-                var collection = [],
-                    url,
-                    colors = ["cyan", "blue", "green", "yellow", "purple"],
-                    defaultLineWidth = 2;
+            return function(elem, urls) {
 
                 google.load("visualization", "1");
 
                 // Set callback to run when API is loaded
                 google.setOnLoadCallback(drawVisualization);
 
-                for (var l = 0; l < urls.length; l++) {
-                    $.ajax({
-                        url: urls[l],
-                        dataType: "json",
-                        async: false,
-                        success: function (payload) {
-                            collection.push(parsePayload(payload));
-                        }
-                    });
-                }
+                $.ajax({
+                    url: urls[0],
+                    dataType: "json",
+                    async: false,
+                    success: function(payload) {
+                        data = parsePayload(payload);
+                    }
+                });
 
                 // Called when the Visualization API is loaded.
                 function drawVisualization() {
-                    var datapoint,
-                        i,
-                        l,
-                        subset,
-                        dataset,
+                    // Create and populate a data table.
+                    var table = new google.visualization.DataTable(),
+                        dataLen = data.length,
+                        idx,
                         each,
-                        graphs = [],
-                        lines = [];
+                        tup;
 
-                    for (i = 0; i < collection.length; i++) {
-                        subset = collection[i];
-                        dataset = [];
-                        for (l = 0; l < subset.length; l++) {
-                            each = subset[l];
-                            datapoint = {
-                                "date": each.start.toDate(),
-                                "value": each.count
-                            };
-                            dataset.push(datapoint);
-                        }
-                        graphs.push({"label": "Dataset A", "data": dataset});
-                        lines.push({color: lines[i], width: defaultLineWidth});
+                    table.addColumn('datetime', 'time');
+                    table.addColumn('number', 'Function A');
+
+                    for (idx = 0; idx < dataLen; idx++) {
+                        each = data[idx];
+                        var dt = new Date(each.start);
+                        tup = [dt, each.count];
+                        table.addRow(tup);
                     }
 
+                    // specify options
                     var options = {
-                        width: "100%",
-                        height: "350px",
-                        lines: lines
+                        "width": "100%",
+                        "height": "350px",
+                        "showTooltip": true,
+                        "legend": false
                     };
 
                     // Instantiate our graph object.
                     var graph = new links.Graph(elem);
 
                     // Draw our graph with the created data and options
-                    graph.draw(graphs, options);
+                    graph.draw(table, options);
 
                     visibleTimelines.push(graph);
                 }
@@ -203,7 +190,7 @@
 
     };
 
-    var drawVisualization = function (targetDatasetName, visType, idx, renderAxis) {
+    var drawVisualization = function(targetDatasetName, visType, idx, renderAxis) {
         var elem = NS.document.getElementById(targetDatasetName),
             urls = resources[targetDatasetName],
             renderer = getRenderer(visType)(elem, urls);
@@ -215,7 +202,7 @@
         links.events.addListener(
             renderer,
             'rangechange',
-            function () {
+            function() {
                 updateVisualizations(idx);
             }
         );
@@ -237,13 +224,13 @@
     NS.draw = {};
     NS.isDrawn = {};
 
-    NS.draw["atti"] = function () {
+    NS.draw["atti"] = function() {
         drawVisualization("atti", "timeline", 0);
     };
-    NS.draw["legislature"] = function () {
+    NS.draw["legislature"] = function() {
         drawVisualization("atti", "timeline", 1);
     };
-    NS.draw["atti2"] = function () {
+    NS.draw["atti2"] = function() {
         drawVisualization("atti2", "graph", 2);
     };
 
@@ -251,8 +238,8 @@
     drawVisualization("legislature", "timeline", 1, true);
     drawVisualization("atti2", "graph", 2);
 
-    setTimeout(function () {
+    setTimeout(function() {
         updateVisualizations(2);
-    }, 3 * 250);
+    }, 500);
 
 }(this));
