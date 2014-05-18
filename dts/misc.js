@@ -143,6 +143,21 @@ var fn = {
         }, 'votazioni');
 
 
+    },
+    'eventi': function() {
+
+        ReadAndSave(function(r) {
+            row = r.split(';');
+            return {
+                "start": j2(row[1]),
+                "content": {
+                    "title": row[0]
+                },
+                "type": 'eventi'
+            }
+        }, 'eventi');
+
+
     }
 
 };
