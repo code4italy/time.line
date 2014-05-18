@@ -1,4 +1,4 @@
-(function (NS) {
+(function(NS) {
     "use strict";
 
     var links = NS.links,
@@ -7,10 +7,10 @@
         google = NS.google,
         resources = {
             "atti": [
-                "json/data_cluster_mensile.json",
+                "json/data_cluster_mensile.json"
             ],
             "atti2": [
-                "json/data_cluster_mensile.json"
+                "json/data_cluster_mensile_ddl.json"
             ],
             "legislature": [
                 "json/data_legislature.json"
@@ -20,14 +20,19 @@
             width: '100%',
             height: 'auto',
             layout: "box",
-            eventMargin: 0,  // minimal margin between events
+            eventMargin: 0, // minimal margin between events
             eventMarginAxis: 4, // minimal margin beteen events and the axis
-            editable: false,   // enable dragging and editing events
+            editable: false, // enable dragging and editing events
             style: 'box',
             stackEvents: true
         },
-        stackedOptions = $.extend(true, {stackEvents: true}, baseOptions),
-        unStackedOptions = $.extend(true, {stackEvents: false, eventMarginAxis: 0}, baseOptions),
+        stackedOptions = $.extend(true, {
+            stackEvents: true
+        }, baseOptions),
+        unStackedOptions = $.extend(true, {
+            stackEvents: false,
+            eventMarginAxis: 0
+        }, baseOptions),
         visibleTimelines = [];
 
     function itemClassByContent(type, content) {
@@ -101,7 +106,7 @@
         }
     }
 
-    var updateVisualizations = function () {
+    var updateVisualizations = function() {
         var source,
             sourceRange,
             idx,
@@ -120,16 +125,16 @@
         }
     };
 
-    var getRenderer = function (rendererName) {
+    var getRenderer = function(rendererName) {
         var renderer;
         if (rendererName === "timeline") {
-            return function (elem, urls) {
+            return function(elem, urls) {
                 renderer = new links.Timeline(elem, (urls.length > 1) ? stackedOptions : unStackedOptions);
                 visibleTimelines.push(renderer);
                 return renderer;
             };
         } else if (rendererName === "graph") {
-            return function (elem, urls) {
+            return function(elem, urls) {
 
                 google.load("visualization", "1");
 
@@ -176,7 +181,7 @@
 
     };
 
-    var drawVisualization = function (targetDatasetName, visType, idx) {
+    var drawVisualization = function(targetDatasetName, visType, idx) {
         var elem = NS.document.getElementById(targetDatasetName),
             urls = resources[targetDatasetName],
             renderer = getRenderer(visType)(elem, urls);
@@ -186,7 +191,7 @@
         links.events.addListener(
             renderer,
             'rangechange',
-            function () {
+            function() {
                 updateVisualizations(idx);
             }
         );
@@ -194,16 +199,37 @@
         if (visType !== "graph") {
             updateVisualizations(idx);
         }
+
+        NS.isDrawn[targetDatasetName] = true;
     };
+
+
+
+
+
+    NS._vis = visibleTimelines;
+
+    //espongo per il lazy load
+    NS.draw = {}
+    NS.isDrawn = {};
+
+    NS.draw["atti"] = function() {
+        drawVisualization("atti", "timeline", 0);
+    };
+    NS.draw["legislature"] = function() {
+        drawVisualization("atti", "timeline", 1);
+    };
+    NS.draw["atti2"] = function() {
+        drawVisualization("atti2", "graph", 2);
+    };
+
 
     drawVisualization("atti", "timeline", 0);
     drawVisualization("legislature", "timeline", 1);
     drawVisualization("atti2", "graph", 2);
 
-    setTimeout(function () {
+    setTimeout(function() {
         updateVisualizations(2);
     }, 1000);
-
-    NS._vis = visibleTimelines;
 
 }(this));
