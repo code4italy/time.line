@@ -7,7 +7,7 @@
         google = NS.google,
         resources = {
             "atti": [
-                "json/data_cluster_mensile.json",
+                "json/data_cluster_mensile.json"
             ],
             "atti2": [
                 "json/data_cluster_mensile.json"
@@ -47,9 +47,7 @@
                 }
                 break;
             default:
-                // console.log('c');
                 return 'item-' + type;
-                break;
         }
     }
 
@@ -158,18 +156,11 @@
                     table.addColumn('datetime', 'time');
                     table.addColumn('number', 'Function A');
 
-                    // create data
-                    //for (idx = 0; idx < dataLen; idx++) {
-                    //    each = data[idx];
-                    //    table.addRow([each.start, each.count]);
-                    //}
-                    var d = new Date(2010, 9, 23, 20, 0, 0);
                     for (idx = 0; idx < dataLen; idx++) {
                         each = data[idx];
                         var dt  = new Date(each.start);
                         tup = [dt, each.count];
                         table.addRow(tup);
-                        d.setMinutes(d.getMinutes() + 1);
                     }
 
                     // specify options
@@ -188,7 +179,7 @@
 
                     visibleTimelines.push(graph);
                 }
-            }
+            };
         }
         return undefined;
 
