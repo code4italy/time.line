@@ -190,7 +190,7 @@
 
     };
 
-    var drawVisualization = function(targetDatasetName, visType, idx) {
+    var drawVisualization = function(targetDatasetName, visType, idx, renderAxis) {
         var elem = NS.document.getElementById(targetDatasetName),
             urls = resources[targetDatasetName],
             renderer = getRenderer(visType)(elem, urls);
@@ -209,6 +209,10 @@
 
         if (visType !== "graph") {
             updateVisualizations(idx);
+        }
+
+        if (!renderAxis) {
+            elem.classList.add('hide-axis');
         }
 
         NS.isDrawn[targetDatasetName] = true;
@@ -231,7 +235,7 @@
     };
 
     drawVisualization("atti", "timeline", 0);
-    drawVisualization("legislature", "timeline", 1);
+    drawVisualization("legislature", "timeline", 1, true);
     drawVisualization("atti2", "graph", 2);
 
     setTimeout(function() {
