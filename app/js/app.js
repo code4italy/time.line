@@ -30,6 +30,28 @@
         unStackedOptions = $.extend(true, {stackEvents: false, eventMarginAxis: 0}, baseOptions),
         visibleTimelines = [];
 
+    function itemClassByContent(type, content) {
+        switch (type) {
+            case 'atti':
+            case 'ddl':
+            case 'pdl':
+            case 'pdlc':
+
+                if (content.count > 50) {
+                    // console.log('a');
+                    return 'high item-' + type;
+                } else {
+                    //console.log('b');
+                    return 'low item-' + type;
+
+                }
+                break;
+            default:
+                // console.log('c');
+                return 'item-' + type;
+                break;
+        }
+    }
 
     function parsePayload(payload) {
         var idx,
@@ -53,6 +75,7 @@
             if (end) {
                 item.end = moment(end);
             }
+            item.className = itemClassByContent(each.type, each.content);
             data.push(item);
         }
 
@@ -78,15 +101,17 @@
         }
     }
 
-    var updateVisualizations = function (sourceIdx) {
-        var source = visibleTimelines[sourceIdx],
-            sourceRange = source.getVisibleChartRange(),
+    var updateVisualizations = function () {
+        var source,
+            sourceRange,
             idx,
             idsLen = visibleTimelines.length;
 
-        for (idx = 0; idx < idsLen; idx++) {
-            var target = visibleTimelines[idx];
-            if (idx !== sourceIdx) {
+        if (idsLen > 1) {
+            source = visibleTimelines[0];
+            sourceRange = source.getVisibleChartRange();
+            for (idx = 1; idx < idsLen; idx++) {
+                var target = visibleTimelines[idx];
                 target.setVisibleChartRange(
                     sourceRange.start,
                     sourceRange.end
@@ -99,7 +124,7 @@
         var renderer;
         if (rendererName === "timeline") {
             return function (elem, urls) {
-                renderer =  new links.Timeline(elem, (urls.length > 1) ? stackedOptions : unStackedOptions);
+                renderer = new links.Timeline(elem, (urls.length > 1) ? stackedOptions : unStackedOptions);
                 visibleTimelines.push(renderer);
                 return renderer;
             };
@@ -166,12 +191,18 @@
             }
         );
 
-        updateVisualizations(idx);
+        if (visType !== "graph") {
+            updateVisualizations(idx);
+        }
     };
 
     drawVisualization("atti", "timeline", 0);
     drawVisualization("legislature", "timeline", 1);
     drawVisualization("atti2", "graph", 2);
+
+    setTimeout(function () {
+        updateVisualizations(2);
+    }, 1000);
 
     NS._vis = visibleTimelines;
 
