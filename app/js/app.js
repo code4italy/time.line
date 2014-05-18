@@ -18,26 +18,30 @@
                 "json/data_legislature.json"
             ],
             "eventi": [
-                "json/data_eventi.json"
+                "json/data_eventi.json",
+                "json/data_votazioni.json"
             ]
         },
-        baseOptions = {
+        stackedOptions = {
             width: '100%',
             height: 'auto',
             layout: "box",
-            eventMargin: 0, // minimal margin between events
+            eventMargin: 8,
             eventMarginAxis: 4, // minimal margin beteen events and the axis
             editable: false, // enable dragging and editing events
             style: 'box',
             stackEvents: true
         },
-        stackedOptions = $.extend(true, {
-            stackEvents: true
-        }, baseOptions),
-        unStackedOptions = $.extend(true, {
-            stackEvents: false,
-            eventMarginAxis: 0
-        }, baseOptions),
+        unStackedOptions = {
+            width: '100%',
+            height: 'auto',
+            layout: "box",
+            eventMargin: 0,
+            eventMarginAxis: 4, // minimal margin beteen events and the axis
+            editable: false, // enable dragging and editing events
+            style: 'box',
+            stackEvents: false
+        },
         visibleTimelines = [];
 
     function itemClassByContent(type, content) {
