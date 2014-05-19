@@ -222,27 +222,30 @@
             urls = resources[targetDatasetName],
             renderer = getRenderer(visType)(elem, urls);
 
-        if (visType === "timeline") {
-            renderResources(urls, renderer);
-        }
+        setTimeout(function () {
+                if (visType === "timeline") {
+                    renderResources(urls, renderer);
+                }
 
-        links.events.addListener(
-            renderer,
-            'rangechange',
-            function () {
-                updateVisualizations(idx);
-            }
-        );
+                links.events.addListener(
+                    renderer,
+                    'rangechange',
+                    function () {
+                        updateVisualizations(idx);
+                    }
+                );
 
-        if (visType !== "graph") {
-            updateVisualizations(idx);
-        }
+                if (visType !== "graph") {
+                    updateVisualizations(idx);
+                }
 
-        if (!renderAxis) {
-            elem.classList.add('hide-axis');
-        }
+                if (!renderAxis) {
+                    elem.classList.add('hide-axis');
+                }
 
-        NS.isDrawn[targetDatasetName] = true;
+                NS.isDrawn[targetDatasetName] = true;
+                updateVisualizations();
+            }, 500 * idx);
     };
 
     NS._vis = visibleTimelines;
@@ -261,14 +264,14 @@
         drawVisualization("atti2", "graph", 2);
     };
 
-    drawVisualization("atti", "timeline", 0);
-    drawVisualization("governi", "timeline", 1);
-    drawVisualization("legislature", "timeline", 1, true);
-    drawVisualization("eventi", "timeline", 2);
-    drawVisualization("atti2", "graph", 3);
+    function init() {
+        drawVisualization("atti", "timeline", 0);
+        drawVisualization("atti2", "graph", 1);
+        drawVisualization("eventi", "timeline", 2);
+        drawVisualization("governi", "timeline", 3);
+        drawVisualization("legislature", "timeline", 4, true);
+    }
 
-    setTimeout(function () {
-        updateVisualizations(2);
-    }, 3 * 250);
+    init();
 
 }(this));
