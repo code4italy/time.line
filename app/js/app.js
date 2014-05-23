@@ -271,6 +271,10 @@
 
     setTimeout(function () {
         updateVisualizations(1);
+        drawVisualization("atti", "timeline", 0);
     }, 3 * 250);
+
+    NS.draw = drawVisualization;
+    NS.update = updateVisualizations;
 
 }(this));
