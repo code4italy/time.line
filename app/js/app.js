@@ -116,23 +116,21 @@
         }
     }
 
-    var updateVisualizations = function (targetIdx) {
+    var updateVisualizations = function () {
         var source,
             sourceRange,
             idx,
             idsLen = visibleTimelines.length;
 
-        if (targetIdx !== undefined && idsLen > 0) {
-            source = visibleTimelines[targetIdx];
+        if (idsLen > 1) {
+            source = visibleTimelines[0];
             sourceRange = source.getVisibleChartRange();
-            for (idx = 0; idx < idsLen; idx++) {
+            for (idx = 1; idx < idsLen; idx++) {
                 var target = visibleTimelines[idx];
-                if (idx !== targetIdx) {
-                    target.setVisibleChartRange(
-                        sourceRange.start,
-                        sourceRange.end
-                    );
-                }
+                target.setVisibleChartRange(
+                    sourceRange.start,
+                    sourceRange.end
+                );
             }
         }
     };
@@ -236,9 +234,9 @@
             }
         );
 
-        //if (visType !== "graph") {
-        //    updateVisualizations(idx);
-        //}
+        if (visType !== "graph") {
+            updateVisualizations(idx);
+        }
 
         if (!renderAxis) {
             elem.classList.add('hide-axis');
@@ -265,16 +263,12 @@
 
     drawVisualization("atti", "timeline", 0);
     drawVisualization("governi", "timeline", 1);
-    drawVisualization("legislature", "timeline", 1, true);
-    drawVisualization("eventi", "timeline", 2);
-    drawVisualization("atti2", "graph", 3);
+    drawVisualization("legislature", "timeline", 2, true);
+    drawVisualization("eventi", "timeline", 3);
+    drawVisualization("atti2", "graph", 4);
 
     setTimeout(function () {
-        updateVisualizations(1);
-        drawVisualization("atti", "timeline", 0);
-    }, 3 * 250);
-
-    NS.draw = drawVisualization;
-    NS.update = updateVisualizations;
+        updateVisualizations();
+    }, 1000);
 
 }(this));
