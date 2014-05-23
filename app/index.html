@@ -81,17 +81,17 @@
 							</div>
 							<div id="wrap">
                                 <div style="text-align: center; width: 100%"><em>trascina</em> e <em>fai zoom</em> su questa barra</div>
-                                <div id="atti" title="tutti gli atti"></div>
+                                <div id="atti" class="item" title="tutti gli atti"></div>
                                 <div id="desc">
                                     <span>Rosso: Proposte di legge ordinaria</span> |
                                     <span>panBlu: Proposte di legge costituzionale </span> |
                                     <span>Arancione: Disegno di legge ordinaria</span> |
                                     <span>Verde: tutti gli atti</span>
                                 </div>
-								<div id="atti2" title="disegni di legge"></div>
-                                <div id="eventi" title="eventi&elezioni"></div>
-                                <div id="governi" title="governi"></div>
-                                <div id="legislature" title="legislature"></div>
+								<div id="atti2" class="item" title="disegni di legge"></div>
+                                <div id="eventi" class="item" title="eventi&elezioni"></div>
+                                <div id="governi" class="item" title="governi"></div>
+                                <div id="legislature" class="item" title="legislature"></div>
                             </div>
 						</div>
 						<!-- /main -->
@@ -109,7 +109,7 @@
 		<script>
 		$(function(){
 			//i div delle timeline
-			$('#wrap > div').each(function(){
+            $('#wrap').find('.item').each(function(){
 				var $this = $(this);
 
 				//aggiungo la timeline al menu
