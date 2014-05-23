@@ -229,16 +229,15 @@
             renderResources(urls, renderer);
         }
 
-        links.events.addListener(
-            renderer,
-            'rangechange',
-            function () {
-                updateVisualizations(0);
-            }
-        );
-
         if (visType !== "graph") {
-            updateVisualizations(0);
+            links.events.addListener(
+                renderer,
+                'rangechange',
+                function () {
+                    window.console.log("Update: " + idx);
+                    updateVisualizations(idx);
+                }
+            );
         }
 
         if (!renderAxis) {
@@ -264,14 +263,16 @@
         drawVisualization("atti2", "graph", 2);
     };
 
-    drawVisualization("atti", "timeline", 0);
-    drawVisualization("governi", "timeline", 1);
-    drawVisualization("legislature", "timeline", 2, true);
-    drawVisualization("eventi", "timeline", 3);
-    drawVisualization("atti2", "graph", 4);
-
+    drawVisualization("atti2", "graph", 0);
     setTimeout(function () {
-        updateVisualizations(0);
-    }, 1000);
+        drawVisualization("governi", "timeline", 1);
+        drawVisualization("legislature", "timeline", 2, true);
+        drawVisualization("eventi", "timeline", 3);
+        drawVisualization("atti", "timeline", 4);
+
+        setTimeout(function () {
+            updateVisualizations(4);
+        }, 1000);
+    }, 500);
 
 }(this));
