@@ -116,21 +116,24 @@
         }
     }
 
-    var updateVisualizations = function () {
+    var updateVisualizations = function (idx) {
         var source,
             sourceRange,
-            idx,
+            i,
             idsLen = visibleTimelines.length;
 
-        if (idsLen > 1) {
-            source = visibleTimelines[0];
+        if (idsLen) {
+            source = visibleTimelines[idx];
             sourceRange = source.getVisibleChartRange();
-            for (idx = 1; idx < idsLen; idx++) {
-                var target = visibleTimelines[idx];
-                target.setVisibleChartRange(
-                    sourceRange.start,
-                    sourceRange.end
-                );
+            for (i = 0; i < idsLen; i++) {
+                if (idx !== i) {
+                    var target = visibleTimelines[i];
+                    target.setVisibleChartRange(
+                        sourceRange.start,
+                        sourceRange.end
+                    );
+
+                }
             }
         }
     };
@@ -230,12 +233,12 @@
             renderer,
             'rangechange',
             function () {
-                updateVisualizations(idx);
+                updateVisualizations(0);
             }
         );
 
         if (visType !== "graph") {
-            updateVisualizations(idx);
+            updateVisualizations(0);
         }
 
         if (!renderAxis) {
@@ -268,7 +271,7 @@
     drawVisualization("atti2", "graph", 4);
 
     setTimeout(function () {
-        updateVisualizations();
+        updateVisualizations(0);
     }, 1000);
 
 }(this));
