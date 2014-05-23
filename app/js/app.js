@@ -48,6 +48,8 @@
         },
         visibleTimelines = [];
 
+    google.load("visualization", "1");
+
     function itemClassByContent(type, content) {
         switch (type) {
             case 'atti':
@@ -154,7 +156,6 @@
                     colors = ["cyan", "blue", "green", "yellow", "purple"],
                     defaultLineWidth = 2;
 
-                google.load("visualization", "1");
 
                 // Set callback to run when API is loaded
                 google.setOnLoadCallback(drawVisualization);
@@ -223,22 +224,20 @@
     var drawVisualization = function (targetDatasetName, visType, idx, renderAxis) {
         var elem = NS.document.getElementById(targetDatasetName),
             urls = resources[targetDatasetName],
-            renderer = getRenderer(visType)(elem, urls);
+            renderer = getRenderer(visType),
+            vis = renderer(elem, urls);
 
         if (visType === "timeline") {
-            renderResources(urls, renderer);
+            renderResources(urls, vis);
         }
 
-        if (visType !== "graph") {
-            links.events.addListener(
-                renderer,
-                'rangechange',
-                function () {
-                    window.console.log("Update: " + idx);
-                    updateVisualizations(idx);
-                }
-            );
-        }
+        links.events.addListener(
+            vis,
+            'rangechange',
+            function () {
+                updateVisualizations(idx);
+            }
+        );
 
         if (!renderAxis) {
             elem.classList.add('hide-axis');
