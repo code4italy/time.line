@@ -40,6 +40,32 @@
         heatmap.addDataPoint(new OpenLayers.LonLat(lon, lat), count || 1);
     }
 
+    function setPoints(pointSeq) {
+        var lon,
+            lat,
+            count,
+            len = pointSeq.length,
+            item,
+            idx,
+            dataset = {
+                max: baseThreshold
+            },
+            data = [];
+
+        for (idx = 0; idx < len; idx++) {
+            item = pointSeq[idx];
+            lon = item[1];
+            lat = item[0];
+            count = item[2] || 1;
+            data.push({
+                lonlat: new OpenLayers.LonLat(lon, lat),
+                count: count
+            });
+        }
+        dataset.data = data;
+        heatmap.setDataSet(dataset);
+    }
+
     function displayCoords(coordsSeq) {
         var key,
             coords;
