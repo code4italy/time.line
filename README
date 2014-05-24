@@ -15,6 +15,8 @@ DESCRIZIONE
 
 Questo software è stato prodotto al hackaton #code4italy del 2014. Utilizza gli open data della Camera dei Deputati (dati.camera.it) per generare una timeline di eventi e stratistiche, in modo da favorire l'analisi temporale dell'attività parlamentare
 
+Un'ulteriore feature e' la cronologia degli Atti, applicata alla mappa del nostro Paese.
+
 STRUTTURA
 
 /code4italy
@@ -27,6 +29,8 @@ STRUTTURA
 |__/dts         -->     applicazione node.js che si occupa di normalizzare e aggregare i dati proveniente da /data per  fornirli all'applicazione web tramite file json
 |
 |__/mobile      -->     applicazione per iPad e tablet Android, scritta in titanium
+|
+|__/scripts     -->     script che effettua query sugli Atti per citta'.
 
 
 E’ disponibile la presentazione e le slides in vari formati nella cartella
