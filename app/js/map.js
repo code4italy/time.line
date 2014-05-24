@@ -36,14 +36,18 @@
         heatmap.setDataSet(initialData);
     }
 
-    function displayCoords(data) {
+    function addPoint(lon, lat, count) {
+        heatmap.addDataPoint(new OpenLayers.LonLat(lon, lat), count || 1);
+    }
+
+    function displayCoords(coordsSeq) {
         var key,
             coords;
 
-        for (key in data) {
-            if (data.hasOwnProperty(key)) {
-                coords = data[key];
-                heatmap.addDataPoint(new OpenLayers.LonLat(coords[1], coords[0]), 1);
+        for (key in coordsSeq) {
+            if (coordsSeq.hasOwnProperty(key)) {
+                coords = coordsSeq[key];
+                addPoint(coords[1], coords[0], coords[2]);
             }
         }
     }
