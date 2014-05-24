@@ -11,7 +11,7 @@
         $ = NS.jQuery,
         citiesCoords,
         actsInfo,
-        baseThreshold = 2,
+        baseThreshold = 10,
         currentDt,
         stopped = false,
         $info;
@@ -135,7 +135,12 @@
                 var points = [],
                     info,
                     $anchor,
-                    el;
+                    el,
+                    i,
+                    dates,
+                    datesLen,
+                    start,
+                    end;
                 if (stopped) {
                     if (actsInfo && !displaying) {
                         $info.children().remove();
@@ -154,20 +159,26 @@
                     setTimeout(displayDate, 1000);
                 } else {
                     displaying = false;
-                    item = data[idx];
-                    dt = item[0];
-                    currentDt = dt;
-                    cities = item[1];
-                    citiesLen = cities.length;
-                    for (l = 0; l < citiesLen; l++) {
-                        coords = citiesCoords[cities[l]];
-                        points.push([coords[0], coords[1]]);
+                    start = (idx < baseThreshold) ? 0 : idx - baseThreshold;
+                    end = idx;
+                    dates = data.slice(start, end);
+                    datesLen = dates.length;
+                    for (i = 0; i < datesLen; i++) {
+                        item = dates[i];
+                        dt = item[0];
+                        currentDt = dt;
+                        cities = item[1];
+                        citiesLen = cities.length;
+                        for (l = 0; l < citiesLen; l++) {
+                            coords = citiesCoords[cities[l]];
+                            points.push([coords[0], coords[1], i + 1]);
+                        }
                     }
                     setPoints(points);
                     updateDate(dt);
                     if (idx < dataLen) {
                         idx++;
-                        setTimeout(displayDate, 250);
+                        setTimeout(displayDate, 100);
                     }
                 }
             }
