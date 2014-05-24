@@ -9,13 +9,15 @@
         originLon = 1334747.0395556,
         originLat = 4987357.6202126,
         $ = NS.jQuery,
-        citiesCoords;
+        citiesCoords,
+        baseThreshold = 2;
 
     function centerMap() {
         map.zoomTo(6);
     }
 
     function initializeMap() {
+        var initialData = { max: baseThreshold, data: [] };
         map = new OpenLayers.Map({
             div: 'heatmapArea',
             center: new OpenLayers.LonLat(originLon, originLat),
@@ -31,26 +33,19 @@
         );
         map.addLayers([layer, heatmap]);
         centerMap();
+        heatmap.setDataSet(initialData);
     }
 
     function displayCoords(data) {
-        var threshold = 2,
-            nudata = [],
-            key,
-            coords,
-            transformedTestData = { max: threshold, data: [] };
+        var key,
+            coords;
 
         for (key in data) {
             if (data.hasOwnProperty(key)) {
                 coords = data[key];
-                nudata.push({
-                    lonlat: new OpenLayers.LonLat(coords[1], coords[0]),
-                    count: 1
-                });
+                heatmap.addDataPoint(new OpenLayers.LonLat(coords[1], coords[0]), 1);
             }
         }
-        transformedTestData.data = nudata;
-        heatmap.setDataSet(transformedTestData);
     }
 
     function loadCitiesCoords () {
