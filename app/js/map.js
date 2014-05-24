@@ -10,7 +10,11 @@
         originLat = 4987357.6202126,
         $ = NS.jQuery,
         citiesCoords,
-        baseThreshold = 2;
+        actsInfo,
+        baseThreshold = 2,
+        currentDt,
+        stopped = false,
+        $info;
 
     function centerMap() {
         map.zoomTo(6);
@@ -78,7 +82,7 @@
         }
     }
 
-    function loadCitiesCoords () {
+    function loadCitiesCoords() {
         $.ajax({
             url: "json/capoluoghi.json",
             async: false,
@@ -88,19 +92,102 @@
         });
     }
 
-    function initializeData () {
+    function loadActsInfo() {
+        $.ajax({
+            url: "json/acts.json",
+            async: false,
+            success: function (payload) {
+                actsInfo = payload;
+            }
+        });
+
+    }
+
+    function initializeData() {
         loadCitiesCoords();
     }
 
-    function displayCities () {
+    function displayCities() {
         if (citiesCoords) {
             displayCoords(citiesCoords);
         }
     }
 
-    function bindEvents () {
+    function runActs() {
+        function runTimeline(data) {
+            var dataLen = data.length,
+                item,
+                coords,
+                idx = 0,
+                l,
+                dt,
+                cities,
+                citiesLen,
+                $dateMsg = $("#date"),
+                $info = $("#info"),
+                displaying = false;
+
+            function updateDate(dt) {
+                $dateMsg.text(dt);
+            }
+
+            function displayDate() {
+                var points = [],
+                    info,
+                    $anchor,
+                    el;
+                if (stopped) {
+                    if (actsInfo && !displaying) {
+                        $info.children().remove();
+                        info = actsInfo[dt];
+                        for (el in info) {
+                            if (info.hasOwnProperty(el)) {
+                                $anchor = $('<a>');
+                                $anchor.attr("href", info[el].ref);
+                                $anchor.text(info[el].title);
+                                $info.append("<p>").append($anchor);
+                            }
+                        }
+                        $info.fadeIn(500);
+                        displaying = true;
+                    }
+                    setTimeout(displayDate, 1000);
+                } else {
+                    displaying = false;
+                    item = data[idx];
+                    dt = item[0];
+                    currentDt = dt;
+                    cities = item[1];
+                    citiesLen = cities.length;
+                    for (l = 0; l < citiesLen; l++) {
+                        coords = citiesCoords[cities[l]];
+                        points.push([coords[0], coords[1]]);
+                    }
+                    setPoints(points);
+                    updateDate(dt);
+                    if (idx < dataLen) {
+                        idx++;
+                        setTimeout(displayDate, 250);
+                    }
+                }
+            }
+
+            displayDate();
+        }
+
+        $.ajax({
+            url: "json/timeline.json",
+            async: true,
+            success: runTimeline
+        });
+    }
+
+    function bindEvents() {
         document.getElementById("tog").onclick = function () {
-            heatmap.toggle();
+            stopped = !stopped;
+            if (!stopped) {
+                $('#info').fadeOut(500);
+            }
         };
     }
 
@@ -108,7 +195,8 @@
         initializeMap();
         initializeData();
         bindEvents();
-        displayCities();
+        runActs();
+        loadActsInfo();
     };
 
 }(this));

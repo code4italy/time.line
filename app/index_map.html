@@ -49,9 +49,9 @@
             cursor: pointer;
             color: white;
             background-color: black;
-            width: 80px;
+            width: 32px;
             height: 16px;
-            font-size: 0.5em;
+            font-size: 1em;
         }
 
         #gen:hover {
@@ -68,6 +68,10 @@
         h2 {
             margin-top: 0;
         }
+        #date {
+            width: 100%;
+            text-align: center;
+        }
     </style>
     <link rel="shortcut icon" type="image/png"
           href="http://www.patrick-wied.at/img/favicon.png"/>
@@ -75,8 +79,10 @@
 
 </head>
 <body>
-<div id="tog" class="btn">Toggle HeatmapOverlay</div>
-<div id="loading">Loading...</div>
+<div id="tog" class="btn">Stop</div>
+<div id="date"></div>
+<div id="info" style="display: none"></div>
+<hr>
 <div id="main">
     <div id="heatmapArea">
     </div>
