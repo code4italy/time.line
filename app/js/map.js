@@ -13,8 +13,7 @@
         actsInfo,
         baseThreshold = 10,
         currentDt,
-        stopped = false,
-        $info;
+        stopped = false;
 
     function centerMap() {
         map.zoomTo(6);
