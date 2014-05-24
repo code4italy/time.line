@@ -4,42 +4,24 @@
     var map,
         layer,
         heatmap,
-        OpenLayers = NS.OpenLayers;
+        OpenLayers = NS.OpenLayers,
+        document = NS.document,
+        originLon = 1334747.0395556,
+        originLat = 4987357.6202126,
+        $ = NS.jQuery,
+        citiesCoords;
 
-    function init() {
-        var testData = {
-            max: 46,
-            data: [
-                {lat: 41.9000, lon: 12.5000, count: 10},
-                {lat: 41.9000, lon: 12.5000, count: 10}
-            ]
-        };
+    function centerMap() {
+        map.zoomTo(6);
+    }
 
-        var transformedTestData = { max: testData.max, data: [] },
-            data = testData.data,
-            datalen = data.length,
-            nudata = [];
-
-        // in order to use the OpenLayers Heatmap Layer we have to transform our data into
-        // { max: <max>, data: [{lonlat: <OpenLayers.LonLat>, count: <count>},...]}
-
-        while (datalen--) {
-            nudata.push({
-                lonlat: new OpenLayers.LonLat(data[datalen].lon, data[datalen].lat),
-                count: data[datalen].count
-            });
-        }
-
-        transformedTestData.data = nudata;
-
+    function initializeMap() {
         map = new OpenLayers.Map({
             div: 'heatmapArea',
-            center: new OpenLayers.LonLat(1334747.0395556, 4987357.6202126),
+            center: new OpenLayers.LonLat(originLon, originLat),
             zoom: 6
         });
         layer = new OpenLayers.Layer.OSM();
-
-        // create our heatmap layer
         heatmap = new OpenLayers.Layer.Heatmap(
             "Heatmap Layer",
             map,
@@ -48,19 +30,60 @@
             {isBaseLayer: false, opacity: 0.3, projection: new OpenLayers.Projection("EPSG:4326")}
         );
         map.addLayers([layer, heatmap]);
-
-        //map.zoomToMaxExtent();
-        map.zoomTo(6);
-        heatmap.setDataSet(transformedTestData);
-        NS.map = map;
+        centerMap();
     }
 
-    window.onload = function () {
-        init();
-    };
+    function displayCoords(data) {
+        var threshold = 2,
+            nudata = [],
+            key,
+            coords,
+            transformedTestData = { max: threshold, data: [] };
 
-    document.getElementById("tog").onclick = function () {
-        heatmap.toggle();
+        for (key in data) {
+            if (data.hasOwnProperty(key)) {
+                coords = data[key];
+                nudata.push({
+                    lonlat: new OpenLayers.LonLat(coords[1], coords[0]),
+                    count: 1
+                });
+            }
+        }
+        transformedTestData.data = nudata;
+        heatmap.setDataSet(transformedTestData);
+    }
+
+    function loadCitiesCoords () {
+        $.ajax({
+            url: "json/capoluoghi.json",
+            async: false,
+            success: function (payload) {
+                citiesCoords = payload;
+            }
+        });
+    }
+
+    function initializeData () {
+        loadCitiesCoords();
+    }
+
+    function displayCities () {
+        if (citiesCoords) {
+            displayCoords(citiesCoords);
+        }
+    }
+
+    function bindEvents () {
+        document.getElementById("tog").onclick = function () {
+            heatmap.toggle();
+        };
+    }
+
+    NS.onload = function () {
+        initializeMap();
+        initializeData();
+        bindEvents();
+        displayCities();
     };
 
 }(this));
