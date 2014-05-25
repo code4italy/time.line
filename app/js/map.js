@@ -11,7 +11,7 @@
         $ = NS.jQuery,
         citiesCoords,
         actsInfo,
-        baseThreshold = 10,
+        baseThreshold = 15,
         currentDt,
         stopped = false;
 
@@ -31,7 +31,7 @@
             "Heatmap Layer",
             map,
             layer,
-            {visible: true, radius: 10},
+            {visible: true, radius: 15},
             {isBaseLayer: false, opacity: 0.3, projection: new OpenLayers.Projection("EPSG:4326")}
         );
         map.addLayers([layer, heatmap]);
@@ -170,7 +170,7 @@
                         citiesLen = cities.length;
                         for (l = 0; l < citiesLen; l++) {
                             coords = citiesCoords[cities[l]];
-                            points.push([coords[0], coords[1], i + 1]);
+                            points.push([coords[0], coords[1], (i + 2) / 2]);
                         }
                     }
                     setPoints(points);
