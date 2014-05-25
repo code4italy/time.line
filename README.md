@@ -19,7 +19,7 @@ DESCRIZIONE
 
 Questo software è stato prodotto al hackaton #code4italy del 2014. Utilizza gli open data della Camera dei Deputati (dati.camera.it) per generare una timeline di eventi e stratistiche, in modo da favorire l'analisi temporale dell'attività parlamentare
 
-Un'ulteriore feature e' la cronologia degli Atti, applicata alla mappa del nostro Paese.
+Un'ulteriore feature e' la cronologia degli Atti, applicata alla mappa del nostro Paese. Essa geolocalizza gli atti dei capoluoghi nel tempo, a partire dal 1849, fino ai giorni nostri.
 
 STRUTTURA
 
