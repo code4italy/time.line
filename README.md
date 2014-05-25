@@ -23,8 +23,6 @@ Questo software è stato prodotto al hackaton #code4italy del 2014. Utilizza gli
 ### Cronologia degli Atti
 Un'ulteriore feature e' la cronologia degli Atti, applicata alla mappa del nostro Paese.
 
-Link diretto: http://code4italy.github.io/time.line/app/index_map.html
-
 ### STRUTTURA
 
     /code4italy
