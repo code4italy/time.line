@@ -46,8 +46,11 @@ E’ disponibile la presentazione e le slides in vari formati nella cartella
 
 
 ### UTILIZZO
-Scaricare il progetto.
+E' consigliata la visione della DEMO online: http://code4italy.github.io/time.line/app/
 
+Altrimenti, e' possibile scaricare e installare il progetto.
+
+#### Installazione
 Per il front-end web (requisiti: pyton):
 
 avviare il server tramite il comando sh serve.sh (necessita pyton). Il sito web sarà disponibile all'indirizzo http://localhost:8000.
