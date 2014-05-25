@@ -201,9 +201,14 @@
 
     function bindEvents() {
         document.getElementById("tog").onclick = function () {
+            var $info = $('#info'),
+                $button = $('#tog');
             stopped = !stopped;
             if (!stopped) {
-                $('#info').fadeOut(500);
+                $button.text("Info");
+                $info.fadeOut(500);
+            } else {
+                $button.text("Continua");
             }
         };
     }
