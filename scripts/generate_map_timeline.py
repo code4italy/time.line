@@ -33,7 +33,6 @@ def process_heatmap(heatmap):
     return sorted((k, v) for k, v in heatmap.items())
 
 def main():
-    #cities = ['Cremona']
     cities = get_cities()
     heatmap = defaultdict(list)
     acts = defaultdict(dict)
@@ -47,14 +46,14 @@ def main():
         for each in results:
             uid = each["uid"]["value"]
             d = each["data"]["value"]
-            title = json.dumps(each["nomeAtto"]["value"])
+            title = each["nomeAtto"]["value"].encode("utf-8")
             ref = each["atto"]["value"]
             try:
                 dt = stamp_to_dt(d).isoformat()
             except ValueError:
                 print("Error on: {0} {1} {2} {3}"
                         .format(uid, d, title, ref))
-                dt = "-".join(dt_rxp.match(d).groups())
+                continue
             heatmap[dt].append(city)
             acts[dt][uid] = {"title": title, "ref": ref}
         else:

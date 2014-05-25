@@ -120,6 +120,7 @@
                 idx = 0,
                 l,
                 dt,
+                dates,
                 cities,
                 citiesLen,
                 $dateMsg = $("#date"),
@@ -136,7 +137,6 @@
                     $anchor,
                     el,
                     i,
-                    dates,
                     datesLen,
                     start,
                     end;
