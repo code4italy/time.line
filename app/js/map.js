@@ -138,18 +138,25 @@
                     el,
                     i,
                     datesLen,
+                    date,
                     start,
+                    $p,
                     end;
                 if (stopped) {
                     if (actsInfo && !displaying) {
                         $info.children().remove();
-                        info = actsInfo[dt];
-                        for (el in info) {
-                            if (info.hasOwnProperty(el)) {
-                                $anchor = $('<a>');
-                                $anchor.attr("href", info[el].ref);
-                                $anchor.text(info[el].title);
-                                $info.append("<p>").append($anchor);
+                        datesLen = dates.length;
+                        for (i = datesLen - 1; i > -1; i--) {
+                            date = dates[i][0];
+                            info = actsInfo[date];
+                            for (el in info) {
+                                if (info.hasOwnProperty(el)) {
+                                    $anchor = $('<a>');
+                                    $anchor.attr("href", info[el].ref);
+                                    $anchor.text(date + ": " + info[el].title);
+                                    $p = $('<p>').addClass("info-row str-" + i).append($anchor);
+                                    $info.append($p);
+                                }
                             }
                         }
                         $info.fadeIn(500);
