@@ -27,18 +27,18 @@ Un'ulteriore feature e' la cronologia degli Atti, applicata alla mappa del nostr
 
 ### STRUTTURA
 
-> /code4italy
-> |__/app         -->     front end statico web per la visualizzazione dei dati
-> |
-> |__/data        -->     contiene file statici di dati, generalmente csv estratti dagli open data
-> |
-> |__/doc         -->     documentazione
-> |
-> |__/dts         -->     applicazione node.js che si occupa di normalizzare e aggregare i dati proveniente da /data per  fornirli all'applicazione web tramite file json
-> |
-> |__/mobile      -->     applicazione per iPad e tablet Android, scritta in titanium
-> |
-> |__/scripts     -->     script che effettua query sugli Atti per citta'.
+    /code4italy
+    |__/app         -->     front end statico web per la visualizzazione dei dati
+    |
+    |__/data        -->     contiene file statici di dati, generalmente csv estratti dagli open data
+    |
+    |__/doc         -->     documentazione
+    |
+    |__/dts         -->     applicazione node.js che si occupa di normalizzare e aggregare i dati proveniente da /data per  fornirli all'applicazione web tramite file json
+    |
+    |__/mobile      -->     applicazione per iPad e tablet Android, scritta in titanium
+    |
+    |__/scripts     -->     script che effettua query sugli Atti per citta'.
 
 
 E’ disponibile la presentazione e le slides in vari formati nella cartella
