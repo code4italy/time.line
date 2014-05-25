@@ -1,20 +1,20 @@
-Time.line #code4italy
+# Time.line #code4italy
 
 https://github.com/code4italy/time.line
 
-Visualizza il demo qui: http://code4italy.github.io/time.line/app/
+Visualizza il DEMO qui: http://code4italy.github.io/time.line/app/
 
 ![alt tag](https://raw.githubusercontent.com/code4italy/time.line/master/esempio1.png)
 ![alt tag](https://raw.githubusercontent.com/code4italy/time.line/master/esempio2.png)
 
 
-AUTORI
+# AUTORI
 
-Emanuele Decupis (@balanza)
-Rigel Di Scala (@zedr_)
-Nicola Ghirardi (@ghirardinicola)
-Alessandro Pellegata (@alepelle81)
-Alessio Ricco (@alessioricco)
+- Emanuele Decupis (@balanza)
+- Rigel Di Scala (@zedr_)
+- Nicola Ghirardi (@ghirardinicola)
+- Alessandro Pellegata (@alepelle81)
+- Alessio Ricco (@alessioricco)
 
 
 DESCRIZIONE
