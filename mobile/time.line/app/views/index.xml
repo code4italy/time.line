@@ -1,0 +1,5 @@
+<Alloy>
+	<Window class="container">
+		<WebView id="web" url="/web/index.html" ></WebView>
+	</Window>
+</Alloy>
