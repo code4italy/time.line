@@ -58,4 +58,4 @@ Per l'app mobile (requisiti: Appcelerator Titanium):
 Posizionarsi nella cartella /mobile, eseguire ti build -p ipad.
 
 LICENZA
-Il progetto viene rilasciato con licenza Creative Commons with Attribution (http://creativecommons.org/licenses/by/3.0/it/legalcode)
+Il progetto viene rilasciato con licenze GPL + Creative Commons with Attribution (http://creativecommons.org/licenses/by/3.0/it/legalcode)
