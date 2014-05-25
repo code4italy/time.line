@@ -1,6 +1,6 @@
 Time.line #code4italy
 
-https://github.com/code4italy/time.line
+Live DEMO: http://code4italy.github.io/time.line/app/
 
 ![alt tag](https://raw.githubusercontent.com/code4italy/time.line/master/esempio1.png)
 ![alt tag](https://raw.githubusercontent.com/code4italy/time.line/master/esempio2.png)
@@ -42,6 +42,8 @@ E’ disponibile la presentazione e le slides in vari formati nella cartella
 
 
 UTILIZZO
+
+Si consiglia di visionare il live DEMO a questo indirizzo: http://code4italy.github.io/time.line/app/
 
 Scaricare il progetto.
 
