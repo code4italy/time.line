@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Time.line : " />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Time.line</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/code4italy/time.line">View on GitHub</a>
+
+          <h1 id="project_title">Time.line</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/code4italy/time.line/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/code4italy/time.line/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>Time.line #code4italy</p>
+
+<p><a href="https://github.com/code4italy/time.line">https://github.com/code4italy/time.line</a></p>
+
+<p><img src="https://raw.githubusercontent.com/code4italy/time.line/master/esempio1.png" alt="alt tag"><img src="https://raw.githubusercontent.com/code4italy/time.line/master/esempio2.png" alt="alt tag"></p>
+
+<p>AUTORI</p>
+
+<p>Emanuele Decupis (<a href="https://github.com/balanza" class="user-mention">@balanza</a>)
+Rigel Di Scala (@zedr_)
+Nicola Ghirardi (<a href="https://github.com/ghirardinicola" class="user-mention">@ghirardinicola</a>)
+Alessandro Pellegata (@alepelle81)
+Alessio Ricco (<a href="https://github.com/alessioricco" class="user-mention">@alessioricco</a>)</p>
+
+<p>DESCRIZIONE</p>
+
+<p>Questo software è stato prodotto al hackaton #code4italy del 2014. Utilizza gli open data della Camera dei Deputati (dati.camera.it) per generare una timeline di eventi e stratistiche, in modo da favorire l'analisi temporale dell'attività parlamentare</p>
+
+<p>Un'ulteriore feature e' la cronologia degli Atti, applicata alla mappa del nostro Paese.</p>
+
+<p>STRUTTURA</p>
+
+<p>/code4italy
+|<strong>/app         --&gt;     front end statico web per la visualizzazione dei dati
+|
+|</strong>/data        --&gt;     contiene file statici di dati, generalmente csv estratti dagli open data
+|
+|<strong>/doc         --&gt;     documentazione
+|
+|</strong>/dts         --&gt;     applicazione node.js che si occupa di normalizzare e aggregare i dati proveniente da /data per  fornirli all'applicazione web tramite file json
+|
+|<strong>/mobile      --&gt;     applicazione per iPad e tablet Android, scritta in titanium
+|
+|</strong>/scripts     --&gt;     script che effettua query sugli Atti per citta'.</p>
+
+<p>E’ disponibile la presentazione e le slides in vari formati nella cartella
+/doc/presentazione</p>
+
+<p>UTILIZZO</p>
+
+<p>Scaricare il progetto.</p>
+
+<p>Per il front-end web (requisiti: pyton):</p>
+
+<p>avviare il server tramite il comando sh serve.sh (necessita pyton). Il sito web sarà disponibile all'indirizzo http://localhost:8000.</p>
+
+<p>Per il dts (requisiti: node.js):</p>
+
+<p>Lo script estrae  dati e salva i file json in /app/json. Avviare lo script tramite node index.js</p>
+
+<p>Per l'app mobile (requisiti: Appcelerator Titanium):</p>
+
+<p>Posizionarsi nella cartella /mobile, eseguire ti build -p ipad.</p>
+
+<p>LICENZA
+Il progetto viene rilasciato con licenza Creative Commons with Attribution (<a href="http://creativecommons.org/licenses/by/3.0/it/legalcode">http://creativecommons.org/licenses/by/3.0/it/legalcode</a>)</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Time.line maintained by <a href="https://github.com/code4italy">code4italy</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
