@@ -6,8 +6,8 @@
         heatmap,
         OpenLayers = NS.OpenLayers,
         document = NS.document,
-        originLon = 1334747.0395556,
-        originLat = 4987357.6202126,
+        originLon = 1332301.0546508,
+        originLat = 5161022.5484523,
         $ = NS.jQuery,
         citiesCoords,
         actsInfo,
@@ -36,6 +36,7 @@
         );
         map.addLayers([layer, heatmap]);
         centerMap();
+        NS.map = map;
         heatmap.setDataSet(initialData);
     }
 
