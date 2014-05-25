@@ -8,7 +8,7 @@ Visualizza il DEMO qui: http://code4italy.github.io/time.line/app/
 ![alt tag](https://raw.githubusercontent.com/code4italy/time.line/master/esempio2.png)
 
 
-# AUTORI
+## AUTORI
 
 - Emanuele Decupis (@balanza)
 - Rigel Di Scala (@zedr_)
@@ -17,13 +17,15 @@ Visualizza il DEMO qui: http://code4italy.github.io/time.line/app/
 - Alessio Ricco (@alessioricco)
 
 
-DESCRIZIONE
+## DESCRIZIONE
 
+### Timeline
 Questo software è stato prodotto al hackaton #code4italy del 2014. Utilizza gli open data della Camera dei Deputati (dati.camera.it) per generare una timeline di eventi e stratistiche, in modo da favorire l'analisi temporale dell'attività parlamentare
 
+### Cronologia degli Atti
 Un'ulteriore feature e' la cronologia degli Atti, applicata alla mappa del nostro Paese.
 
-STRUTTURA
+### STRUTTURA
 
 /code4italy
 |__/app         -->     front end statico web per la visualizzazione dei dati
@@ -43,8 +45,7 @@ E’ disponibile la presentazione e le slides in vari formati nella cartella
 /doc/presentazione
 
 
-UTILIZZO
-
+### UTILIZZO
 Scaricare il progetto.
 
 Per il front-end web (requisiti: pyton):
@@ -59,5 +60,5 @@ Per l'app mobile (requisiti: Appcelerator Titanium):
 
 Posizionarsi nella cartella /mobile, eseguire ti build -p ipad.
 
-LICENZA
+### LICENZA
 Il progetto viene rilasciato con licenze GPL + Creative Commons with Attribution (http://creativecommons.org/licenses/by/3.0/it/legalcode)
