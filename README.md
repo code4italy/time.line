@@ -1,4 +1,4 @@
-Time.line #code4italy
+# Time.line #code4italy
 
 Live DEMO: http://code4italy.github.io/time.line/app/
 
@@ -6,46 +6,46 @@ Live DEMO: http://code4italy.github.io/time.line/app/
 ![alt tag](https://raw.githubusercontent.com/code4italy/time.line/master/esempio2.png)
 
 
-AUTORI
+## AUTORI
 
-Emanuele Decupis (@balanza)
-Rigel Di Scala (@zedr_)
-Nicola Ghirardi (@ghirardinicola)
-Alessandro Pellegata (@alepelle81)
-Alessio Ricco (@alessioricco)
+- Emanuele Decupis (@balanza)
+- Rigel Di Scala (@zedr_)
+- Nicola Ghirardi (@ghirardinicola)
+- Alessandro Pellegata (@alepelle81)
+- Alessio Ricco (@alessioricco)
 
-
-DESCRIZIONE
+## DESCRIZIONE
 
 Questo software è stato prodotto al hackaton #code4italy del 2014. Utilizza gli open data della Camera dei Deputati (dati.camera.it) per generare una timeline di eventi e stratistiche, in modo da favorire l'analisi temporale dell'attività parlamentare
 
 Un'ulteriore feature e' la cronologia degli Atti, applicata alla mappa del nostro Paese. Essa geolocalizza gli atti dei capoluoghi nel tempo, a partire dal 1849, fino ai giorni nostri.
 
-STRUTTURA
+## STRUTTURA
 
-/code4italy
-|__/app         -->     front end statico web per la visualizzazione dei dati
-|
-|__/data        -->     contiene file statici di dati, generalmente csv estratti dagli open data
-|
-|__/doc         -->     documentazione
-|
-|__/dts         -->     applicazione node.js che si occupa di normalizzare e aggregare i dati proveniente da /data per  fornirli all'applicazione web tramite file json
-|
-|__/mobile      -->     applicazione per iPad e tablet Android, scritta in titanium
-|
-|__/scripts     -->     script che effettua query sugli Atti per citta'.
-
-
-E’ disponibile la presentazione e le slides in vari formati nella cartella
-/doc/presentazione
+    /code4italy
+    |__/app         -->     front end statico web per la visualizzazione dei dati
+    |
+    |__/data        -->     contiene file statici di dati, generalmente csv estratti dagli open data
+    |
+    |__/doc         -->     documentazione
+    |
+    |__/dts         -->     applicazione node.js che si occupa di normalizzare e aggregare i dati proveniente da /data per  fornirli all'applicazione web tramite file json
+    |
+    |__/mobile      -->     applicazione per iPad e tablet Android, scritta in titanium
+    |
+    |__/scripts     -->     script che effettua query sugli Atti per citta'.
 
 
-UTILIZZO
+E’ disponibile la presentazione e le slides in vari formati nella cartella /doc/presentazione
 
+
+## UTILIZZO
+
+### DEMO
 Si consiglia di visionare il live DEMO a questo indirizzo: http://code4italy.github.io/time.line/app/
 
-Scaricare il progetto.
+### Installlazione
+Altrimenti, e possibile scaricare il progetto ed eseguirlo in locale.
 
 Per il front-end web (requisiti: pyton):
 
@@ -59,5 +59,5 @@ Per l'app mobile (requisiti: Appcelerator Titanium):
 
 Posizionarsi nella cartella /mobile, eseguire ti build -p ipad.
 
-LICENZA
+## LICENZA
 Il progetto viene rilasciato con licenze GPL + Creative Commons with Attribution (http://creativecommons.org/licenses/by/3.0/it/legalcode)
